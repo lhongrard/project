@@ -143,7 +143,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                     <strong>แบบบักทึกข้อมูล</strong>
                                 </div>
                                 <div class="card-body card-block">
-                                    <action action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                         <!-- วัน/เวลา/ผลัด -->
                                         <div class="row form-group">
                                             <div class="col col-md-3">
@@ -254,17 +254,20 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                 <span class="help-block-none">ลองติจูด (long)</span>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3"></div>
-                                            <div class="col-12 col-md-9">
-                                                <p id="btnlocaSetCenter" onclick="setCenter()" class="btn btn-info">ค้นหาตำแหน่ง</p><br><br>
+                                        <div id="mapd" style="display:none">
+                                            <div class="row form-group">
+                                                <div class="col col-md-3"></div>
+                                                <div class="col-12 col-md-9">
+                                                    <p id="btnlocaSetCenter" onclick="setCenter(this.id,case_location_lat.id,case_location_lng.id,'map')"
+                                                        class="btn btn-info">ค้นหาตำแหน่ง</p><br><br>
 
-                                                <div id="map"></div>
-                                                <style>#map{
+                                                    <div id="map"></div>
+                                                    <style>#map{
                                                             height: 400px;
                                                             }</style>
-                                                <span class="help-block-none" style="font-size:16px;">*
-                                                    เลื่อนจุดมาร์คเพื่อปรับตำแหน่ง</span>
+                                                    <span class="help-block-none" style="font-size:16px;">*
+                                                        เลื่อนจุดมาร์คเพื่อปรับตำแหน่ง</span>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -343,7 +346,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                     </div>
                                                 </div>
                                                 <div class="suff">
-                                                    <div >
+                                                    <div>
                                                         <div class="row form-group">
                                                             <div class="col col-md-3">
                                                                 <label for="password-input" class=" form-control-label"><B>รายละเอียดผู้ประสบอุบัติเหตุ</B></label>
@@ -393,16 +396,16 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button class="btn btn-info" type="button" onclick="add_suff(this)"><i
+                                                <button class="btn btn-success" type="button" onclick="add_suff(this)"><i
                                                         class="fa fa-plus"></i>
-                                                    เพิ่มคน</button>
+                                                    เพิ่มผู้ประสบเหตุ</button>
                                             </div>
-                                        </div>
+                                        </div><br>
                                         <!-- 
                                         <div>
                                             
                                         </div> -->
-                                        <div>
+                                        <div align="center">
                                             <button class="btn btn-info" type="button" id="add_car"><i class="fa fa-plus"></i>
                                                 เพิ่มข้อมูล</button>
                                         </div>
@@ -476,14 +479,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             </div>
                                         </div>
 
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="text" class=" form-control-label"><B>ผู้ประสบเหตุ / คู่กรณี</B></label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" id="password-input" name="password-input" class="form-control">
-                                            </div>
-                                        </div>
+
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label for="password-input" class=" form-control-label"><B>ประเภทของผู้ประสบเหตุ</B></label>
@@ -518,7 +514,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                 </div>
                                 <div class="card-footer">
                                     <center><button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-dot-circle-o"></i> <B>บันทึกข้อมูล</B>
+                                            <i class="fa fa-save"></i> <B>บันทึกข้อมูล</B>
                                         </button></center>
                                 </div>
                                 </form>
@@ -617,6 +613,17 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                 $("#othercause").hide()
             };
         });
+
+        $("#drop").change(function () {
+            console.log($("#drop").val());
+            if ($("#drop").val() == "อื่นๆ") {
+                $("#mapd").show()
+            }
+            else {
+                $("#mapd").hide()
+            };
+        });
+
     </script>
 
 
@@ -639,6 +646,8 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
     </script>
     <script>
         //map
+        var marker = [];
+        var gmarkers = [];
 
         var securkku = { lat: 16.477920, lng: 102.819188 }; //รปภ.มข.
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -652,6 +661,19 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
             position: securkku,
             draggable: true
         });
+
+        google
+            .maps
+            .event
+            .addListener(marker, 'dragend', function () {
+                var my_Point = marker.getPosition(); // หาตำแหน่งของตัว marker เมื่อกดลากแล้วปล่อย
+                map.panTo(my_Point); // ให้แผนที่แสดงไปที่ตัว marker
+                $("#case_location_lat").val(my_Point.lat())
+                $("#case_location_lng").val(my_Point.lng())
+            });
+
+
+        gmarkers.push(marker);
 
         function setCenter(btnLoad, case_location_lat, case_location_lng, getMap) {
             if (navigator.geolocation) {
@@ -675,6 +697,9 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                 draggable: true
                             });
 
+
+
+                        gmarkers.push(marker);
 
                         // gmarkers.push(marker);
 
@@ -799,9 +824,9 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-info" type="button" onclick="add_suff(this)"><i
+                <button class="btn btn-success" type="button" onclick="add_suff(this)"><i
                         class="fa fa-plus"></i>
-                    เพิ่มคน</button>
+                    เพิ่มผู้ประสบเหตุ</button>
             </div>
             `)
         })
