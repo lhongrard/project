@@ -143,7 +143,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                     <strong>แบบบักทึกข้อมูล</strong>
                                 </div>
                                 <div class="card-body card-block">
-                                    <form action="insert_form.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <form action="insert_form.php" method="post" class="form-horizontal">
                                         <!-- วัน/เวลา/ผลัด -->
                                         <div class="row form-group">
                                             <div class="col col-md-3">
