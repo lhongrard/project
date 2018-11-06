@@ -1203,6 +1203,7 @@ section {
         top: 0;
         left: 0;
         height: 170px;
+        display: none;
     }
 }
 
@@ -14520,6 +14521,7 @@ section {
     .m-sm-l-250 {
         margin-left: 250px;
     }
+
 }
 
 @media (max-width: 575px) {
@@ -14639,3 +14641,11 @@ section {
 .vue-lists ul, .vue-lists ol {
     padding-left: 30px;
 }
+
+
+
+    .btn-close::after {
+        clear: both;
+        content: '';
+        display: block;
+    }

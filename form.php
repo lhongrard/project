@@ -1,6 +1,6 @@
-<!-- <?php
+<?php
 date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลาให้เป็นเวลาประเทศไทย
-?> -->
+?>
 
 
 <!DOCTYPE html>
@@ -143,7 +143,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                     <strong>แบบบักทึกข้อมูล</strong>
                                 </div>
                                 <div class="card-body card-block">
-                                    <action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <form action="insert_form.php" method="post" enctype="multipart/form-data" class="form-horizontal">
                                         <!-- วัน/เวลา/ผลัด -->
                                         <div class="row form-group">
                                             <div class="col col-md-3">
@@ -154,7 +154,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-calendar" id="basic-addon1"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" data-provide="datepicker"
+                                                    <input name="date" type="text" class="form-control" data-provide="datepicker"
                                                         data-date-language="th-th" placeholder="คลิ๊กเพื่อระบุวันที่"
                                                         aria-label="Username" aria-describedby="basic-addon1">
                                                 </div>
@@ -165,7 +165,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                 <label class="form-control-label"><B>เวลา</B></label>
                                             </div>
                                             <div class="col-lg-2">
-                                                <input type="text" name="date" class="form-control">
+                                                <input name="time" type="text" name="date" class="form-control">
                                                 <div class="invalid-feedback">Example invalid feedback text</div>
 
                                                 <span class="help-block-none" style="font-size:16px;">ตัวอย่าง : 09.00</span>
@@ -178,21 +178,24 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             <div class="col-12 col-md-9">
                                                 <div class="form-check">
                                                     <div class="radio">
-                                                        <label for="radio" class="form-check-label ">
-                                                            <input type="radio" id="radio1" name="duty_1" value="เช้า"
-                                                                class="form-check-input"> เช้า
+                                                    <input type="radio" id="radio1" name="duty" value="เช้า"
+                                                                class="form-check-input" checked="checked">
+                                                        <label for="radio1" class="form-check-label ">
+                                                             เช้า
                                                         </label>
                                                     </div>
                                                     <div class="radio">
+                                                    <input type="radio" id="radio2" name="duty" value="บ่าย"
+                                                                class="form-check-input" >
                                                         <label for="radio2" class="form-check-label ">
-                                                            <input type="radio" id="radio2" name="duty_2" value="บ่าย"
-                                                                class="form-check-input"> บ่าย
+                                                             บ่าย
                                                         </label>
                                                     </div>
                                                     <div class="radio">
+                                                    <input type="radio" id="radio3" name="duty" value="ดึก"
+                                                                class="form-check-input">
                                                         <label for="radio3" class="form-check-label ">
-                                                            <input type="radio" id="radio3" name="duty_3" value="ดึก"
-                                                                class="form-check-input"> ดึก
+                                                             ดึก
                                                         </label>
                                                     </div>
                                                 </div>
@@ -206,17 +209,15 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             <div class="col col-md-3">
                                                 <label class=" form-control-label"><B>สถานที่เกิดอุบัติเหตุ</B></label>
                                             </div>
-                                            <div class="col-12 col-md-9">
+                                            <div class="col-md-9">
                                                 <select name="select_places" id="drop" class="form-control">
                                                     <option value=""> ===โปรดเลือก=== </option>
                                                     <option value="วงเวียนคณะมนุษยศาสตร์และสังคมศาสตร์">วงเวียนคณะมนุษยศาสตร์และสังคมศาสตร์</option>
-                                                    <option value="วงเวียนหอพักชายที่ 16">วงเวียนหอพักชายที่ 16
-                                                    </option>
+                                                    <option value="วงเวียนหอพักชายที่ 16">วงเวียนหอพักชายที่ 16 </option>
                                                     <option value="ถนนหน้าปั๊มน้ำมันปตท.">ถนนหน้าปั๊มน้ำมันปตท.</option>
                                                     <option value="ยูเทิร์นหน้าแฟลตจามจุรี">ยูเทิร์นหน้าแฟลตจามจุรี</option>
                                                     <option value="สี่แยกประตู 6">สี่แยกประตู 6</option>
-                                                    <option value="วงเวียนคณะวิศวกรรมศาสตร์ (โรตาแล็ค)">วงเวียนคณะวิศวกรรมศาสตร์
-                                                        (โรตาแล็ค)</option>
+                                                    <option value="วงเวียนคณะวิศวกรรมศาสตร์ (โรตาแล็ค)">วงเวียนคณะวิศวกรรมศาสตร์ (โรตาแล็ค)</option>
                                                     <option value="ถนนมอดินแดง ด้านหน้าหอพัก 8 หลัง">ถนนมอดินแดง
                                                         ด้านหน้าหอพัก 8 หลัง</option>
                                                     <option value="แยกคณะเภสัชศาสตร์">แยกคณะเภสัชศาสตร์</option>
@@ -225,19 +226,16 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                     <option value="ถนนสหศาสตร์ ด้านหน้าคณะสถาปัตยกรรมศาสตร์">ถนนสหศาสตร์
                                                         ด้านหน้าคณะสถาปัตยกรรมศาสตร์</option>
                                                     <option value="อื่นๆ">อื่นๆ (โปรดระบุ)</option>
-                                                </select><br>
-
-                                                <div class="form-check" id="otherplaces" style="display:none">
-                                                    <div class="checkbox">
-                                                        <label for="radio3" class="form-check-label ">
-                                                            <label>โปรดระบุสถานที่เกิดอุบัติเหตุ</label>
-                                                            <input type="text" id="otherplaces_des" name="places" class="form-control">
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                                </select>
                                             </div>
                                         </div>
-
+                                        <div class="row form-group" id="otherplaces"  style="display:none">
+                                            <div class="col col-md-3"></div>
+                                            <div class="col-md-3">
+                                                <label for="otherplaces_des" class="form-check-label "> โปรดระบุสถานที่เกิดอุบัติเหตุ       </label>
+                                                <input type="text" id="otherplaces_des" name="otherplaces_des" class="form-control">
+                                            </div>
+                                        </div>
                                         <!-- แผนที่ -->
                                         <div class="row form-group">
                                             <div class="col col-md-3">
@@ -284,64 +282,64 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label"><b>จำนวนรถมอเตอร์ไซต์ที่เกิดอุบัติเหตุ</b></label>
+                                                <label class=" form-control-label"><b>จำนวนรถมอเตอร์ไซต์ที่เกิดอุบัติเหตุ</b></label>
                                             </div>
                                             <div class="col-lg-2">
-                                                <input type="text" id="password-input" name="password-input" class="form-control">
+                                                <input type="text" name="num_motor" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label"><B>จำนวนรถยนต์ที่เกิดอุบัติเหตุ</B></label>
+                                                <label class=" form-control-label"><B>จำนวนรถยนต์ที่เกิดอุบัติเหตุ</B></label>
                                             </div>
                                             <div class="col-lg-2">
-                                                <input type="text" id="password-input" name="password-input" class="form-control">
+                                                <input type="text" name="nub_car" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label"><B>จำนวนรถประเภทอื่น
+                                                <label class=" form-control-label"><B>จำนวนรถประเภทอื่น
                                                         ๆ ที่เกิดอุบัติเหตุ</B></label>
                                             </div>
                                             <div class="col-lg-2">
-                                                <input type="text" id="password-input" name="password-input" class="form-control">
+                                                <input type="text" name="num_other" class="form-control">
                                             </div>
                                         </div>
                                         <div id="car">
                                             <div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
-                                                        <label for="password-input" class=" form-control-label"><B>รายละเอียดรถที่เกิดเหตุ</B></label>
+                                                        <label class=" form-control-label"><B>รายละเอียดรถที่เกิดเหตุ</B></label>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="car_type">ประเภท</label>
-                                                        <select class="form-control" id="car_type">
+                                                        <select class="form-control" id="car_type" name="car[0][car_type]">
                                                             <option value="รถยนต์">รถยนต์</option>
                                                             <option value="รถจักรยานยนต์">รถจักรยานยนต์</option>
                                                             <option value="รถอื่นๆ">รถอื่นๆ</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <label for="car_type">ป้ายทะเบียน</label>
-                                                        <input type="text" id="password-input" name="password-input"
+                                                        <label>ป้ายทะเบียน</label>
+                                                        <input type="text" name="car[0][car_reg]"
                                                             class="form-control">
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <label for="car_type">แบรนด์</label>
-                                                        <input type="text" id="password-input" name="password-input"
+                                                        <label>แบรนด์</label>
+                                                        <input type="text" name="car[0][brand]"
                                                             class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"></div>
                                                     <div class="col-md-3">
-                                                        <label for="car_type">รุ่น</label>
-                                                        <input type="text" id="password-input" name="password-input"
+                                                        <label>รุ่น</label>
+                                                        <input type="text" name="car[0][series]"
                                                             class="form-control">
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <label for="car_type">สี</label>
-                                                        <input type="text" id="password-input" name="password-input"
+                                                        <label>สี</label>
+                                                        <input type="text" name="car[0][color]"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -349,17 +347,17 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                     <div>
                                                         <div class="row form-group">
                                                             <div class="col col-md-3">
-                                                                <label for="password-input" class=" form-control-label"><B>รายละเอียดผู้ประสบอุบัติเหตุ</B></label>
+                                                                <label class=" form-control-label"><B>รายละเอียดผู้ประสบอุบัติเหตุ</B></label>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label for="car_type">ชื่อ-สกุล</label>
-                                                                <input type="text" id="password-input" name="password-input"
+                                                                <input type="text" name="car[0][suff][0][name_suff]"
                                                                     class="form-control">
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <label for="car_type">คณะ/หน่วยงาน/บุคคลภายนอก</label>
-                                                                <select class="form-control">
-                                                                    <option>===โปรดเลือก===</option>
+                                                                <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
+                                                                <select class="form-control" name="car[0][suff][0][type_suff]">
+                                                                    <option value="">===โปรดเลือก===</option>
                                                                     <option value="บุคลากร">- บุคลากร</option>
                                                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
                                                                     <optgroup label="นักศึกษา">
@@ -396,7 +394,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button class="btn btn-success" type="button" onclick="add_suff(this)"><i
+                                                <button class="btn btn-success" data-attr="0" type="button" onclick="add_suff(this)"><i
                                                         class="fa fa-plus"></i>
                                                     เพิ่มผู้ประสบเหตุ</button>
                                             </div>
@@ -415,10 +413,10 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                         <!-- สาเหตุ -->
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label"><B>สาเหตุ</B></label>
+                                                <label class=" form-control-label"><B>สาเหตุ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <select name="select" id="drop2" class="form-control">
+                                                <select name="cause" id="drop2" class="form-control">
                                                     <option value=""> ===โปรดเลือก=== </option>
                                                     <option value="ขับรถเสียหลักเอง หรือล้มเอง">ขับรถเสียหลักเอง
                                                         หรือล้มเอง </option>
@@ -453,8 +451,8 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                 </select><br>
 
                                                 <div class="form-check" id="othercause" style="display:none">
-                                                    <div class="checkbox">
-                                                        <label for="radio3" class="form-check-label ">
+                                                    <div>
+                                                        <label class="form-check-label ">
                                                             <label>โปรดระบุสาเหตุ</label>
                                                             <input type="text" id="othercause_des" name="places" class="form-control">
                                                         </label>
@@ -464,10 +462,10 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label"><B>จำนวผู้บาดเจ็บ</B></label>
+                                                <label class=" form-control-label"><B>จำนวผู้บาดเจ็บ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="password-input" name="password-input" class="form-control">
+                                                <input type="text" name="injured" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -475,30 +473,17 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                 <label for="text" class=" form-control-label"><B>จำนวนผู้เสียชีวิต</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="password-input" name="password-input" class="form-control">
+                                                <input type="text" name="decreased" class="form-control">
                                             </div>
                                         </div>
 
 
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label"><B>ประเภทของผู้ประสบเหตุ</B></label>
-                                            </div>
-                                            <div class="col-12 col-md-3">
-                                                นักศึกษา : <input type="text" id="password-input" name="password-input"
-                                                    placeholder="จำนวนคน" class="form-control">
-                                                บุคลากร : <input type="text" id="password-input" name="password-input"
-                                                    placeholder="จำนวนคน" class="form-control">
-                                                บุคคลภายนอก : <input type="text" id="password-input" name="password-input"
-                                                    placeholder="จำนวนคน" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label"><B>หมายเหตุ</B></label>
+                                                <label class=" form-control-label"><B>หมายเหตุ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="password-input" name="password-input" class="form-control">
+                                                <input type="text" name="note" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -506,17 +491,17 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                 <label for="password-input" class=" form-control-label"><B>อัพโหลดรูปภาพ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                                <input type="file" id="file-input" name="img" class="form-control-file">
                                             </div>
                                         </div>
 
 
-                                </div>
-                                <div class="card-footer">
-                                    <center><button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-save"></i> <B>บันทึกข้อมูล</B>
-                                        </button></center>
-                                </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <center><button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-save"></i> <B>บันทึกข้อมูล</B>
+                                            </button></center>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -685,9 +670,11 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                             lng: position.coords.longitude
                         };
 
-                        var marker = new google
-                            .maps
-                            .Marker({
+
+                        for (var i = 0; i < gmarkers.length; i++) {
+                            gmarkers[i].setMap(null);
+                        }
+                        var marker = new google.maps.Marker({
                                 position: {
                                     lat: position.coords.latitude,
                                     lng: position.coords.longitude
@@ -699,9 +686,8 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
 
 
 
-                        gmarkers.push(marker);
 
-                        // gmarkers.push(marker);
+                        gmarkers.push(marker);
 
 
                         google
@@ -733,61 +719,67 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
     </script>
 
     <script>
+        var j = 1;
         $('#add_car').click(function (e) {
             e.preventDefault()
             $("#car").append(`
             <div>
+                <div class="btn-close">
+                    <button type="button" style="float: right" onclick="remove_car(this)" >
+                        <span  style="font-size: 45px;color: red">&times;</span>
+                    </button>
+                </div>
                 <div class="row form-group">
                     <div class="col col-md-3">
-                        <label for="password-input" class=" form-control-label"><B>รายละเอียดรถที่เกิดเหตุ</B></label>
+                        <label class=" form-control-label"><B>รายละเอียดรถที่เกิดเหตุ</B></label>
                     </div>
                     <div class="col-md-3">
                         <label for="car_type">ประเภท</label>
-                        <select class="form-control" id="car_type">
+                        <select class="form-control" id="car_type" name="car[${j}][car_type]">
                             <option value="รถยนต์">รถยนต์</option>
                             <option value="รถจักรยานยนต์">รถจักรยานยนต์</option>
                             <option value="รถอื่นๆ">รถอื่นๆ</option>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label for="car_type">ป้ายทะเบียน</label>
-                        <input type="text" id="password-input" name="password-input"
+                        <label>ป้ายทะเบียน</label>
+                        <input type="text" name="car[${j}][car_reg]"
                             class="form-control">
                     </div>
                     <div class="col-md-3">
-                        <label for="car_type">แบรนด์</label>
-                        <input type="text" id="password-input" name="password-input"
+                        <label>แบรนด์</label>
+                        <input type="text" name="car[${j}][brand]"
                             class="form-control">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col col-md-3"></div>
                     <div class="col-md-3">
-                        <label for="car_type">รุ่น</label>
-                        <input type="text" id="password-input" name="password-input"
+                        <label>รุ่น</label>
+                        <input type="text" name="car[${j}][series]"
                             class="form-control">
                     </div>
                     <div class="col-md-3">
-                        <label for="car_type">สี</label>
-                        <input type="text" id="password-input" name="password-input"
+                        <label>สี</label>
+                        <input type="text" name="car[${j}][color]"
                             class="form-control">
                     </div>
                 </div>
                 <div class="suff">
-                    <div >
+                    <div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="password-input" class=" form-control-label"><B>รายละเอียดผู้ประสบอุบัติเหตุ</B></label>
+                                <label class=" form-control-label"><B>รายละเอียดผู้ประสบอุบัติเหตุ</B></label>
                             </div>
                             <div class="col-md-3">
                                 <label for="car_type">ชื่อ-สกุล</label>
-                                <input type="text" id="password-input" name="password-input"
+                                <input type="text" name="car[${j}][suff][0][name_suff]"
                                     class="form-control">
                             </div>
                             <div class="col-md-3">
-                                <label for="car_type">คณะ/หน่วยงาน/บุคคลภายนอก</label>
-                                <select class="form-control">
-                                    <option>===โปรดเลือก===</option>
+                                <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
+                                <select class="form-control" name="car[${j}][suff][0][type_suff]">
+                                    <option value="">===โปรดเลือก===</option>
                                     <option value="บุคลากร">- บุคลากร</option>
                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
                                     <optgroup label="นักศึกษา">
@@ -824,28 +816,33 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success" type="button" onclick="add_suff(this)"><i
+                <button class="btn btn-success" type="button" data-attr="${j}" onclick="add_suff(this)"><i
                         class="fa fa-plus"></i>
-                    เพิ่มผู้ประสบเหตุ</button>
+                    เพิ่มผู้ประสบเหตุ
+                </button>
             </div>
             `)
+            j++;
+
         })
 
 
         function add_suff(self) {
+            let n =  $(self).closest("div").find(".suff").children().size();
+            let num = $(self).attr("data-attr");
             $(self).closest("div").find(".suff").append(`<div>
                                                         <div class="row form-group">
                                                             <div class="col col-md-3">
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label for="car_type">ชื่อ-สกุล</label>
-                                                                <input type="text" id="password-input" name="password-input"
+                                                                <input type="text" name="car[${num}][suff][${n}][name_suff]"
                                                                     class="form-control">
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <label for="car_type">คณะ/หน่วยงาน/บุคคลภายนอก</label>
-                                                                <select class="form-control">
-                                                                    <option>===โปรดเลือก===</option>
+                                                                <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
+                                                                <select class="form-control" name="car[${num}][suff][${n}][type_suff]">
+                                                                    <option value="">===โปรดเลือก===</option>
                                                                     <option value="บุคลากร">- บุคลากร</option>
                                                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
                                                                     <optgroup label="นักศึกษา">
@@ -880,16 +877,24 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        <div class="btn-close-suff">
+                                                            <button type="button" style="position : absolute; right:0; "  onclick="remove_suff(this)" >
+                                                                <span  style="font-size: 45px;color: red">&times;</span>
+                                                            </button>
+                                                        </div>
                                                     </div>
             `)
         }
 
 
-
-
-
         function remove_car(self) {
-            $(self).parent()[0].remove()
+            //console.log(self)
+            //console.log($(self).closest("div"))
+            $(self).closest("div")[0].remove()
+        }
+
+        function remove_suff(self) {
+            $(self).parents()[1].remove()
         }
 
     </script>
