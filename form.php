@@ -106,7 +106,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                         </li>
                         <li class="active has-sub">
                             <a href="form.php">
-                                <i class="fa fa-edit"></i>บันทึกอุบัติเหตุ</a>
+                                <i class="fa fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
                         </li>
                         <li>
                             <a href="table.php">
@@ -119,6 +119,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                         <li>
                             <a href="#">
                                 <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
+                        </li>
             </div>
             </ul>
             </nav>
