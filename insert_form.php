@@ -1,10 +1,10 @@
 <?php
 include "connect.php";
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
 try {
-
+    //insert ข้อมูลcase
     $date=$_POST["date"];
     $time=$_POST["time"];
     $duty=$_POST["duty"];
@@ -73,16 +73,89 @@ try {
     $stmt->bindParam('13', $decreased);
     $stmt->bindParam('14', $note);
     
-    
+     $stmt->execute(); //เอาเข้า db
+     $id_case = $conn->lastInsertId();
+     
+    // echo "New record created successfully";
+
+    $car = $_POST["car"];
+    for ($i=0; $i<count($car);$i++){
+        // echo "<pre>";
+        // print_r($car[$i]);
+        // echo "</pre>";
+
+         $stmt2 = $conn->prepare("INSERT INTO `car`(
+        `case_case_id`,
+         `car_type`,
+          `brand`, 
+          `series`,
+          `color`, 
+          `car_reg`
+          ) 
+        VALUES (?,?,?,?,?,?)");
+        $stmt2->bindParam('1', $id_case);
+        $stmt2->bindParam('2', $car[$i]["car_type"]);
+        $stmt2->bindParam('3', $car[$i]["brand"]);
+        $stmt2->bindParam('4', $car[$i]["series"]);
+        $stmt2->bindParam('5', $car[$i]["color"]);
+        $stmt2->bindParam('6', $car[$i]["car_reg"]);
+        
+        $stmt2->execute(); //เอาเข้า db
+        $id_car = $conn->lastInsertId();
+
+        for ($j=0; $j<count($car[$i]["suff"]);$j++){
+            $suff_type = "";
+            $faculty = "";
+
+            if ($car[$i]["suff"][$j]["type_suff"] == "บุคลากร"){
+                $suff_type = "บุคลากร";
+            }
+            else if ($car[$i]["suff"][$j]["type_suff"] == "บุคคลภายนอก"){
+                $suff_type = "บุคคลภายนอก";
+            }
+            else {
+                $suff_type = "นักศึกษา";
+                $faculty = $car[$i]["suff"][$j]["type_suff"];
+            }
+
+            $stmt3 = $conn->prepare("INSERT INTO `sufferer`(
+            `car_car_id`,
+            `name_suff`, 
+            `type_suff`, 
+            `faculty`) VALUES (?,?,?,?)");
+                $stmt3->bindParam('1', $id_car);
+                $stmt3->bindParam('2', $car[$i]["suff"][$j]["name_suff"]);
+                $stmt3->bindParam('3', $suff_type);
+                $stmt3->bindParam('4', $faculty);
+                        
+                $stmt3->execute(); //เอาเข้า db
+
+            }
+        }
+
+        echo "<script type='text/javascript'> 
+        
+        alert('บันทึกสำเสร็จแล้ว');
+        window.location.href='form.php'
+        </script>";
+        // header("location: form.php");
 
 
-
-    $stmt->execute();
-    echo "New record created successfully";
     }
 catch(PDOException $e)
     {
-    echo $stmt . "<br>" . $e->getMessage();
+
+        echo "<script type='text/javascript'> 
+        
+        alert('บันทึกไม่สำเสร็จ ติดต่อผู้ดูแลระบบ');
+        window.location.href='form.php'
+        </script>";
+        // echo "<script type='text/javascript'> alert('มีข้อผิดพลาดในการบันทึกข้อมูล'); </script>";
+        // header("location: form.php");
+    
+
+
     }
+
 
 ?>
