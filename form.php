@@ -155,9 +155,9 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-calendar" id="basic-addon1"></i></span>
                                                     </div>
-                                                    <input name="date" type="text" class="form-control" data-provide="datepicker"
-                                                        data-date-language="th-th" placeholder="คลิ๊กเพื่อระบุวันที่"
-                                                        aria-label="Username" aria-describedby="basic-addon1">
+                                                    <input id="date1" type="text" class="form-control" data-provide="datepicker"
+                                                        data-date-language="th-th" placeholder="คลิ๊กเพื่อระบุวันที่" aria-describedby="basic-addon1" >
+                                                    <input id="date" name="date" type="hidden">
                                                 </div>
                                             </div>
                                         </div>
@@ -165,11 +165,16 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             <div class="col col-md-3">
                                                 <label class="form-control-label"><B>เวลา</B></label>
                                             </div>
-                                            <div class="col-lg-2">
-                                                <input name="time" type="text" name="date" class="form-control">
-                                                <div class="invalid-feedback">Example invalid feedback text</div>
-
-                                                <span class="help-block-none" style="font-size:16px;">ตัวอย่าง : 09.00</span>
+                                            <div class="col-lg-2 row text-center">
+                                                <div class="col-md-6">
+                                                    <select id="hr" class="form-control"></select>
+                                                    นาฬิกา
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select id="min" class="form-control"></select>
+                                                    นาที
+                                                </div>
+                                                <input id="time" name="time" type="hidden">
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -427,7 +432,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                         (ระหว่างรถยนต์ - รถยนต์)</option>
                                                     <option value="ขับรถชนฟุตบาท เสาไฟฟ้า ป้ายจราจรหรือสิ่งกีดขวาง">ขับรถชนฟุตบาท
                                                         เสาไฟฟ้า ป้ายจราจรหรือสิ่งกีดขวาง</option>
-                                                    <option value="ับรถชนกันหรือชนท้าย (ระหว่างรถจักรยานยนต์ - รถจักรยานยนต์)">ขับรถชนกันหรือชนท้าย
+                                                    <option value="ขับรถชนกันหรือชนท้าย (ระหว่างรถจักรยานยนต์ - รถจักรยานยนต์)">ขับรถชนกันหรือชนท้าย
                                                         (ระหว่างรถจักรยานยนต์ - รถจักรยานยนต์)</option>
                                                     <option value="แซงหรือตัดหน้าระยะกระชั้นชิด โดยไม่ให้สัญญาณ">แซงหรือตัดหน้าระยะกระชั้นชิด
                                                         โดยไม่ให้สัญญาณ</option>
@@ -455,7 +460,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                     <div>
                                                         <label class="form-check-label ">
                                                             <label>โปรดระบุสาเหตุ</label>
-                                                            <input type="text" id="othercause_des" name="places" class="form-control">
+                                                            <input type="text" id="othercause_des" name="othercause_des" class="form-control">
                                                         </label>
                                                     </div>
                                                 </div>
@@ -615,8 +620,8 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
 
 
 
-    <script src="//getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
-    <script src="//getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.js"></script>
 
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/bootstrap-datepicker-thai.js"></script>
@@ -624,6 +629,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
 
     <script>
         $('.datepicker').datepicker();
+
     </script>
 
     <!-- google map API -->
@@ -898,6 +904,27 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
             $(self).parents()[1].remove()
         }
 
+        $("#date1").change(function(){
+            let date = $("#date1").val()
+            let datearray = date.split("/");
+            $("#date").val(`${(parseInt(datearray[2])-543)}-${datearray[1]}-${datearray[0]}`)
+        })
+        $("#hr").change(function(){
+            $('#time').val(`${$("#hr").val()}:${$("#min").val()}:00`)
+        })
+        $("#min").change(function(){
+            $('#time').val(`${$("#hr").val()}:${$("#min").val()}:00`)
+        })
+        $(document).ready(function() {
+            for(let i = 0 ; i<=23 ; i++){
+                if(i<10) i = `0${i}`
+                $("#hr").append(`<option value="${i}">${i}</option>`)
+            }
+            for(let i = 0 ; i<=59 ; i++){
+                if(i<10) i = `0${i}`
+                $("#min").append(`<option value="${i}">${i}</option>`)
+            }
+        })
     </script>
 </body>
 
