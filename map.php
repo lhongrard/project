@@ -203,11 +203,12 @@
             var gmarkers = [];
             var casemarker = [];
             var securkku = { lat: 16.477920, lng: 102.819188 }; //รปภ.มข.
+            var kku = {lat: 16.462105, lng: 102.813951};
             dataJson.token = localStorage.getItem('token');
       
 		     var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 16,
-			center: securkku,
+			zoom: 14,
+			center: kku,
 			mapTypeId: 'satellite'
 		    });
       
@@ -239,7 +240,7 @@
                     data: '',
                     success: function(result) {
                         //console.log(result)
-                        $.each(result, function(i, value){ // loop..
+                        $.each(result, function(key, value){ // loop..
                             //content = content + "Location : " + item.case_id +  ', Lat = ' + item.lat + ', Lng = ' + item.lng + ' <br>';
                             //var caselat = item.lat;
                             //var caselng = item.lng;
@@ -257,14 +258,14 @@
                         google
                         .maps
                         .event
-                        .addListener(casemarker, 'click', (function (marker, i) {
+                        .addListener(casemarker, 'click', (function (casemarker, i) {
                             return function () {
                             infowindow.setContent(`<p>${value.case_id} </p>`);
-                            infowindow.open(map, marker);
+                            infowindow.open(map, casemarker);
                         }
-                    })(casemarker, i));
+                    })(casemarker, key));
                     }); // ..loop
-                        $('#content').html(content);
+                       // $('#content').html(content);
                 }});    
 
                      

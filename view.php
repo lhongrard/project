@@ -1,9 +1,10 @@
 <?php
   $connect = mysqli_connect("localhost", "root", "", "project1");
   $connect->set_charset("utf8");
-  $query ="SELECT cases.*,car.*,sufferer.* from cases,car,sufferer where cases.case_id=car.case_case_id and car.car_id=sufferer.car_car_id";
-  $result = mysqli_query($connect, $query) or die ("error");
-
+  $case = $_GET['case'];
+  //$sql ="SELECT cases.*,car.*,sufferer.* from cases,car,sufferer where cases.case_id = $case";
+  $sql ="SELECT cases.*,car.*,sufferer.* from cases,car,sufferer where cases.case_id=$case and car.car_id=$case AND sufferer.suffer_id=$case";
+  $query = mysqli_query($connect, $sql) or die ("error");
 
   ?>
 
@@ -19,7 +20,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Accident KKU : ตารางข้อมูล</title>
+    <title>Accident KKU</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -141,57 +142,67 @@
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                      <div class="row">
-                        <div class="col col-lg-12">
-                          <section class="card">
-                            <div class="card-body text-secondary">
-                            <div>
-                                <label><h3><b>ตารางแสดงข้อมูลการเกิดอุบัติเหตุ</b></h3></label>
+                  <div class="container-fluid">
+              <!-- ============================================================== -->
+              <!-- Start Page Content -->
+              <!-- ============================================================== -->
+              <div class="row">
+                  <div class="col-12">
+                      <div class="card">
+                        <div class="card-body">
+                            <font color="black" ><h3 class="card-title">รายละเอียดการเกิดอุบัติเหตุลำดับที่ : <?php echo $case; ?> </h3></font><hr>
+                            <form class="form-horizontal">
+                              <?php		while($result=mysqli_fetch_array($query,MYSQLI_BOTH))
+                              { ?>
+                                <font color="black" size="4px">
+                                
+                                วันที่เกิดอุบัติเหตุ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["date"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                เวลา : &nbsp;&nbsp;&nbsp;<b><?php echo $result["time"];?></b></br>
+                                ผลัด : &nbsp;&nbsp;&nbsp;<b><?php echo $result["duty"];?></b></br>
+                                สถานที่เกิดอุบัติเหตุ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["places"];?></b></br>
+                                สถานที่เกิดอุบัติเหตุ(อื่นๆ) : &nbsp;&nbsp;&nbsp;<b><?php echo $result["places_des"];?></b></br>
                                 <hr>
-                            </div>
-                              <div class="table-responsive">
-                                   <table id="employee_data" class="table table-striped table-bordered">
-                                        <thead>
-                                             <tr>
-                                                    <td><center>ลำดับที่</center></td>
-                                                  <td><center>วันที่เกิดเหตุ</center></td>
-                                                  <td><center>เวลา</center></td>
-                                                  <td><center>ผลัด</center></td>
-                                                  <td><center>สถานที่เกิดอุบัติเหตุ</center></td>
-              								                    <td><center>ผู้ประสบเหตุ / คู่กรณี</center></td>
-                                                  <td><center>ดูข้อมูล</center></td>
-                                                  <td><center>แก้ไขข้อมูล</center></td>
-                                                  <td><center>ลบข้อมูล</center></td>
-                                             </tr>
-                                        </thead>
-                                        <?php
-                                        while($row = mysqli_fetch_array($result))
-                                        {
-                                          ?>
-                                          <tr>
-                                          <td><center><?php echo $row['case_id'];  ?></center></td>
-                                          <td><center><?php echo $row['date'];  ?></center></td>
-                                          <td><center><?php echo $row["time"];?></center></td>
-                                          <td><center><?php echo $row["duty"];?></center></td>
-                                          <td><center><?php echo $row["places"];?></center></td>
-                                          <td><center><?php echo $row["name_suff"];?></center></td>
-                                          <td><center><a href="view.php?case=<?php echo $row['case_id']; ?>"><button type="button" class="btn btn-info btn-sm">ดูข้อมูล</button></a></center></td>
-                                          <td><center><a href="edit?CardH=<?php echo $row['CardH']; ?>"><button type="button" class="btn btn-warning btn-sm">แก้ไขข้อมูล</button></a></center></td>
-                                          <td><center><a href="JavaScript:if(confirm('ยืนยันการลบข้อมูล?') == true){window.location='delete.php?CardH=<?php echo $row['CardH']; ?>';}">
-                                            <button type="button" class="btn btn-danger btn-sm">ลบข้อมูล</button></a></center></td>
-                                        </tr>
 
-                                        <?php
-                                        }
-                                        ?>
-                                   </table>
-              			   </div>
+                                <h3>รายละเอียดรถที่เกิดอุบัติเหตุ</h3>
+                                จำนวนรถมอเตอร์ไซต์ที่เกิดอุบัติเหตุ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["num_motor"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                จำนวนรถยนต์ที่เกิดอุบัติเหตุ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["num_car"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                จำนวนรถประเภทอื่น ๆ ที่เกิดอุบัติเหตุ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["num_other"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                ประเภทรถ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["car_type"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                ป้ายทะเบียน : &nbsp;&nbsp;&nbsp;<b><?php echo $result["car_reg"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                แบรนด์ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["brand"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                รุ่น : &nbsp;&nbsp;&nbsp;<b><?php echo $result["series"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                สี : &nbsp;&nbsp;&nbsp;<b><?php echo $result["color"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                <hr>
 
-                            </div>
-                          </section>
+                                <h3>รายละเอียดผู้ประสบอุบัติเหตุ</h3>
+                                ประเภทผู้ประสบอุบัติเหตุ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["type_suff"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                ชื่อ-สกุล : &nbsp;&nbsp;&nbsp;<b><?php echo $result["name_suff"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                <hr>
+
+                                <h3>รายละเอียดสาเหตุ</h3>
+                                สาเหตุ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["cause"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                จำนวผู้บาดเจ็บ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["injured"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                จำนวนผู้เสียชีวิต : &nbsp;&nbsp;&nbsp;<b><?php echo $result["deceased"];?></b>&nbsp;&nbsp;&nbsp;</br>
+                                <hr>
+
+                                <h3>หมายเหตุ</h3>
+                                สาเหตุ : &nbsp;&nbsp;&nbsp;<b><?php echo $result["note"];?></b>&nbsp;&nbsp;&nbsp;</br>
+
+
+
+
+                                </font>
+                            <?php };
+                            ?>
+                            </form></br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <center><a href=javascript:history.back(1)><button type="button" class="btn btn-primary">กลับ</button></a></center>
                         </div>
                       </div>
+                  </div>
+              </div>
+
+          </div>
 
                         </div>
                     </div>

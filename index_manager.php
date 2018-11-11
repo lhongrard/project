@@ -107,7 +107,7 @@
                         <li>
                             <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
-                        </li>
+                        </li><hr>
                         <li>
                             <a href="#">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
