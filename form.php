@@ -15,7 +15,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Accident KKU</title>
+    <title>Accident KKU : บันทึกข้อมูล</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -50,7 +50,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="index_officer.php">
                             <img src="images/icon/logo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -65,7 +65,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
                         <li>
                             <a href="form.php">
@@ -93,7 +93,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
 
-                <a href="#">
+                <a href="index_officer.php">
                     <img src="images/icon/logo.png" alt="Cool Admin" />
                 </a>
             </div>
@@ -118,7 +118,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
+                                <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
             </div>
             </ul>
@@ -144,7 +144,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                     <strong>แบบบักทึกข้อมูล</strong>
                                 </div>
                                 <div class="card-body card-block">
-                                    <form action="insert_form.php" method="post" class="form-horizontal">
+                                    <form action="insert_form.php" method="post" class="form-horizontal" enctype="multipart/form-data">
                                         <!-- วัน/เวลา/ผลัด -->
                                         <div class="row form-group">
                                             <div class="col col-md-3">
@@ -633,9 +633,9 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
     </script>
 
     <!-- google map API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU4AlB2IxjVm3usy3xHvkzopAlgCc2E2w" type="text/javascript">
-
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU4AlB2IxjVm3usy3xHvkzopAlgCc2E2w" type="text/javascript"></script>
+    
+    <!-- แผนที่ -->
     <script>
         //map
         var marker = [];

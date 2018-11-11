@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +14,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>แผนที่</title>
+    <title>Accident KKU : แผนที่</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -59,7 +63,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
                         <li>
                             <a href="form.php">
@@ -75,7 +79,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
+                                <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
                 </div>
@@ -108,10 +112,10 @@
                         <li class="active has-sub">
                             <a href="map.html">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
-                        </li>
+                        </li><hr>
                         <li>
                             <a href="#">
-                                <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
+                                <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
                 </nav>
@@ -137,6 +141,12 @@
                                     <h3 class="title-3 m-b-30">
                                         <i class="zmdi zmdi-map"></i>แผนที่</h3>
 
+                                            <div id="map"></div>
+
+                                        <style>#map{
+                                                        height: 600px;
+                                                    }
+                                        </style>
                                 </div>
                             </div>
                         </div>
@@ -182,6 +192,87 @@
 
         <!-- Main JS-->
         <script src="js/main.js"></script>
+        <!-- Google map api -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU4AlB2IxjVm3usy3xHvkzopAlgCc2E2w" type="text/javascript"></script>
+
+
+        <script>
+            var dataJson = {};
+            var map;
+            var marker = [];
+            var gmarkers = [];
+            var casemarker = [];
+            var securkku = { lat: 16.477920, lng: 102.819188 }; //รปภ.มข.
+            dataJson.token = localStorage.getItem('token');
+      
+		     var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 16,
+			center: securkku,
+			mapTypeId: 'satellite'
+		    });
+      
+		//     marker = new google.maps.Marker(
+        //   {
+		// 	       position: securkku,
+		// 	       map: map
+        //   });
+      
+
+          // สร้าง marker จาก db
+
+
+        //   $.ajax(
+        //       {
+        //           method: "GET",
+        //           url: "ajax_1.php"
+        //       }
+        //   ).done(function(msg){
+        //         console.log(msg)
+		// 	    if(msg.status == "ok"){
+		// 		    $.each(msg.data, function( key, value ) {
+		// 			 console.log(value.house_location_lat+" "+value.house_location_lng)
+
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "getJson.php",
+                    data: '',
+                    success: function(result) {
+                        //console.log(result)
+                        $.each(result, function(i, value){ // loop..
+                            //content = content + "Location : " + item.case_id +  ', Lat = ' + item.lat + ', Lng = ' + item.lng + ' <br>';
+                            //var caselat = item.lat;
+                            //var caselng = item.lng;
+                            //console.log(value.lat)
+
+                            casemarker = new google.maps.Marker({
+                                position: {
+                                    lat:parseFloat(value.lat),
+                                    lng:parseFloat(value.lng)
+                            },
+                            animation: google.maps.Animation.DROP,
+                            map: map
+                        });
+                        
+                        google
+                        .maps
+                        .event
+                        .addListener(casemarker, 'click', (function (marker, i) {
+                            return function () {
+                            infowindow.setContent(`<p>${value.case_id} </p>`);
+                            infowindow.open(map, marker);
+                        }
+                    })(casemarker, i));
+                    }); // ..loop
+                        $('#content').html(content);
+                }});    
+
+                     
+
+                    
+        </script>
+
+
 
 </body>
 

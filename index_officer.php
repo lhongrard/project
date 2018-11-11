@@ -42,7 +42,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="index_officer.php">
                             <img src="images/icon/logo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -57,7 +57,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
                         <li>
                             <a href="form.php">
@@ -73,9 +73,8 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
+                                <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
-                        
                     </ul>
                 </div>
             </nav>
@@ -85,7 +84,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
+                <a href="index_officer.php">
                     <img src="images/icon/logo.png" alt="Cool Admin" />
                 </a>
             </div>
@@ -98,15 +97,19 @@
                         </li>
                         <li>
                             <a href="form.php">
-                                <i class="fas fa-chart-bar"></i>จัดการข้อมูล</a>
+                                <i class="fas fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
                         </li>
                         <li>
                             <a href="table.php">
                                 <i class="fas fa-table"></i>ดูข้อมูล</a>
                         </li>
                         <li>
+                            <a href="map.php">
+                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                        </li>
+                        <li>
                             <a href="#">
-                                <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
+                                <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
                 </nav>
