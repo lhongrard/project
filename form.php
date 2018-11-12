@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลาให้เป็นเวลาประเทศไทย
+
 ?>
 
 
@@ -113,7 +114,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                 <i class="fas fa-table"></i>ดูข้อมูล</a>
                         </li>
                         <li>
-                            <a href="map.html">
+                            <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li><hr>
                         <li>
@@ -141,7 +142,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong>แบบบักทึกข้อมูล</strong>
+                                    <h2>แบบบักทึกข้อมูล</h2>
                                 </div>
                                 <div class="card-body card-block">
                                     <form action="insert_form.php" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -292,6 +293,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             </div>
                                             <div class="col-lg-2">
                                                 <input type="text" name="num_motor" class="form-control">
+                                                <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -300,6 +302,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             </div>
                                             <div class="col-lg-2">
                                                 <input type="text" name="nub_car" class="form-control">
+                                                <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -309,6 +312,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             </div>
                                             <div class="col-lg-2">
                                                 <input type="text" name="num_other" class="form-control">
+                                                <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
                                         <div id="car">
@@ -472,6 +476,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" name="injured" class="form-control">
+                                                <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -480,6 +485,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" name="decreased" class="form-control">
+                                                <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
 
@@ -490,14 +496,16 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" name="note" class="form-control">
+                                                <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label"><B>อัพโหลดรูปภาพ</B></label>
+                                                <label class=" form-control-label"><B>อัพโหลดรูปภาพ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="file" id="file-input" name="img" class="form-control-file">
+                                                
                                             </div>
                                         </div>
 
@@ -506,7 +514,8 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                     <div class="card-footer">
                                         <center><button type="submit" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-save"></i> <B>บันทึกข้อมูล</B>
-                                            </button></center>
+                                                </button>
+                                        </center>
                                     </div>
                                 </form>
                             </div>
@@ -518,7 +527,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
     </div>
 
     </div>
-
+                                       
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
@@ -666,6 +675,9 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
 
 
         gmarkers.push(marker);
+
+        
+        
 
         function setCenter(btnLoad, case_location_lat, case_location_lng, getMap) {
             if (navigator.geolocation) {
@@ -896,8 +908,8 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
 
         function remove_car(self) {
             //console.log(self)
-            //console.log($(self).closest("div"))
-            $(self).closest("div")[0].remove()
+            // console.log($(self).closest("div").parent())
+            $(self).closest("div").parent().remove()
         }
 
         function remove_suff(self) {
