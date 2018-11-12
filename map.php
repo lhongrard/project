@@ -212,26 +212,9 @@
 			mapTypeId: 'satellite'
 		    });
       
-		//     marker = new google.maps.Marker(
-        //   {
-		// 	       position: securkku,
-		// 	       map: map
-        //   });
-      
-
-          // สร้าง marker จาก db
-
-
-        //   $.ajax(
-        //       {
-        //           method: "GET",
-        //           url: "ajax_1.php"
-        //       }
-        //   ).done(function(msg){
-        //         console.log(msg)
-		// 	    if(msg.status == "ok"){
-		// 		    $.each(msg.data, function( key, value ) {
-		// 			 console.log(value.house_location_lat+" "+value.house_location_lng)
+            infowindow = new google
+			.maps
+			.InfoWindow();
 
             $.ajax(
                 {
@@ -252,22 +235,24 @@
                                     lng:parseFloat(value.lng)
                             },
                             animation: google.maps.Animation.DROP,
-                            map: map
+                            map: map,
+                            
                         });
                         
                         google
                         .maps
                         .event
-                        .addListener(casemarker, 'click', (function (casemarker, i) {
+                        .addListener(casemarker, 'click', (function (marker, i) {
                             return function () {
-                            infowindow.setContent(`<p>${value.case_id} </p>`);
-                            infowindow.open(map, casemarker);
+                            infowindow.setContent(`<p style="text-align:center; font-size:17px">ตำแหน่งการเกิดอุบัติเหตุที่ : ${value.case_id} <br> ${value.places} </p>`);
+                            infowindow.open(map, marker);
                         }
                     })(casemarker, key));
                     }); // ..loop
                        // $('#content').html(content);
                 }});    
 
+                
                      
 
                     

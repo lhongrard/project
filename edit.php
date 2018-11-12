@@ -16,6 +16,18 @@ $date2 = $date[2]."/".$date[1]."/".(intval($date[0])+543);
 // exit();
 // print_r($time);
 // exit();
+
+$stmtCar = $conn->prepare("SELECT car.* FROM car WHERE car.case_case_id=?");
+$stmtCar->bindParam(1,$case);
+$stmtCar->execute();
+// while ($row = $stmtCar->fetch()) {
+//     echo $row['car_id']."<br />\n";
+// }
+// print_r($stmtCar->fetch());
+// exit;
+$countcar = 0;
+$countsuff = 0;
+
 ?>
 
 
@@ -55,6 +67,8 @@ $date2 = $date[2]."/".$date[1]."/".(intval($date[0])+543);
     <link href="./css/datepicker.css" rel="stylesheet">
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    <script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
+
 
 
 </head>
@@ -417,14 +431,20 @@ $date2 = $date[2]."/".$date[1]."/".(intval($date[0])+543);
                                             </div>
                                         </div>
                                         <div id="car">
-                                            <div>
+                                            <?php while ($row = $stmtCar->fetch()) {
+                                            
+                                            ?>
+                                        <div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
                                                         <label class=" form-control-label"><B>รายละเอียดรถที่เกิดเหตุ</B></label>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="car_type">ประเภท</label>
-                                                        <select class="form-control" id="car_type" name="car[0][car_type]">
+                                                        <select class="form-control" id="car_type<?=$countcar?>" name="car[0][car_type]">
+                                                            <script>
+                                                            $('#car_type<?=$countcar; ?> option[value="<?=$row['car_type']; ?>"]').attr('selected','selected');
+                                                            </script>
                                                             <option value="รถยนต์">รถยนต์</option>
                                                             <option value="รถจักรยานยนต์">รถจักรยานยนต์</option>
                                                             <option value="รถอื่นๆ">รถอื่นๆ</option>
@@ -433,12 +453,12 @@ $date2 = $date[2]."/".$date[1]."/".(intval($date[0])+543);
                                                     <div class="col-md-3">
                                                         <label>ป้ายทะเบียน</label>
                                                         <input type="text" name="car[0][car_reg]"
-                                                            class="form-control">
+                                                            class="form-control" value="<?=$row["car_reg"]; ?>">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>แบรนด์</label>
                                                         <input type="text" name="car[0][brand]"
-                                                            class="form-control">
+                                                            class="form-control" value="<?=$row["brand"]; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
@@ -446,15 +466,22 @@ $date2 = $date[2]."/".$date[1]."/".(intval($date[0])+543);
                                                     <div class="col-md-3">
                                                         <label>รุ่น</label>
                                                         <input type="text" name="car[0][series]"
-                                                            class="form-control">
+                                                            class="form-control" value="<?=$row["series"]; ?>">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>สี</label>
                                                         <input type="text" name="car[0][color]"
-                                                            class="form-control">
+                                                            class="form-control" value="<?=$row["color"]; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="suff">
+                                                    <?php 
+                                                    $stmtSuff = $conn->prepare("SELECT sufferer.* FROM sufferer WHERE car_car_id=?");
+                                                    $stmtSuff->bindParam(1,$row['car_id']);
+                                                    $stmtSuff->execute();
+                                                    while ($row_suff = $stmtSuff->fetch()){
+
+                                                    ?>
                                                     <div>
                                                         <div class="row form-group">
                                                             <div class="col col-md-3">
@@ -463,11 +490,11 @@ $date2 = $date[2]."/".$date[1]."/".(intval($date[0])+543);
                                                             <div class="col-md-3">
                                                                 <label for="car_type">ชื่อ-สกุล</label>
                                                                 <input type="text" name="car[0][suff][0][name_suff]"
-                                                                    class="form-control">
+                                                                    class="form-control" value="<?=$row_suff["name_suff"]; ?>">
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
-                                                                <select class="form-control" name="car[0][suff][0][type_suff]">
+                                                                <select class="form-control" name="car[0][suff][0][type_suff]" id="s<?=$countsuff?>">
                                                                     <option value="">===โปรดเลือก===</option>
                                                                     <option value="บุคลากร">- บุคลากร</option>
                                                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
@@ -501,16 +528,35 @@ $date2 = $date[2]."/".$date[1]."/".(intval($date[0])+543);
                                                                         <option value="วิทยาเขตหนองคาย">วิทยาเขตหนองคาย</option>
                                                                     </optgroup>
                                                                 </select>
+                                                                <script>
+                                                                    if ("<?=$row_suff['type_suff']?>"=="นักศึกษา"){
+                                                                        $('#s<?=$countsuff ?>  option[value="<?=$row_suff['faculty']; ?>"]').attr('selected','selected');
+
+                                                                    }else{
+                                                                        $('#s<?=$countsuff ?>  option[value="<?=$row_suff['type_suff']; ?>"]').attr('selected','selected');
+                                                                    }
+                                                           
+                                                                </script>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <?php
+                                                    $countsuff++;
+                                                    }
+                                                    ?>
                                                 </div>
                                                 <button class="btn btn-success" data-attr="0" type="button" onclick="add_suff(this)"><i
                                                         class="fa fa-plus"></i>
                                                     เพิ่มผู้ประสบเหตุ</button>
                                             </div>
                                         </div><br>
+                                            <?php 
+                                                $countcar++;    
+                                        }
+                                        
+                                        ?>
                                         <!-- 
+
                                         <div>
                                             
                                         </div> -->
@@ -730,7 +776,6 @@ $date2 = $date[2]."/".$date[1]."/".(intval($date[0])+543);
 
 
 
-    <script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
     <script src="http://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.js"></script>
 
     <script src="js/bootstrap-datepicker.js"></script>

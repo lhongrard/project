@@ -21,8 +21,8 @@
     <!-- Title Page-->
     <title>Accident KKU : ตารางข้อมูล</title>
 
-    <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
+        <!-- Fontfaces CSS-->
+        <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -41,12 +41,8 @@
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <!-- <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link href="vendor/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" media="all">
 
 </head>
 
@@ -176,10 +172,10 @@
                                           <td><center><?php echo $row["duty"];?></center></td>
                                           <td><center><?php echo $row["places"];?></center></td>
                                           <td><center><?php echo $row["name_suff"];?></center></td>
-                                          <td><center><a href="view.php?case=<?php echo $row['case_id']; ?>"><button type="button" class="btn btn-info btn-sm">ดูข้อมูล</button></a></center></td>
-                                          <td><center><a href="edit?CardH=<?php echo $row['CardH']; ?>"><button type="button" class="btn btn-warning btn-sm">แก้ไขข้อมูล</button></a></center></td>
+                                          <td><center><a href="view.php?case=<?php echo $row['case_id']; ?>"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-search"> ดูข้อมูล</i></button></a></center></td>
+                                          <td><center><a href="edit.php?case=<?php echo $row['case_id']; ?>"><button type="button" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o"> แก้ไขข้อมูล</i></button></a></center></td>
                                           <td><center><a href="JavaScript:if(confirm('ยืนยันการลบข้อมูล?') == true){window.location='delete.php?CardH=<?php echo $row['CardH']; ?>';}">
-                                            <button type="button" class="btn btn-danger btn-sm">ลบข้อมูล</button></a></center></td>
+                                            <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"> ลบข้อมูล</i></button></a></center></td>
                                         </tr>
 
                                         <?php
@@ -203,11 +199,11 @@
 
     </div>
 
-    <!-- Jquery JS-->
-    <!-- <script src="vendor/jquery-3.2.1.min.js"></script> -->
+     <!-- Jquery JS-->
+     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
-    <!-- <script src="vendor/bootstrap-4.1/popper.min.js"></script> -->
-    <!-- <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script> -->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
     <script src="vendor/slick/slick.min.js">
     </script>
@@ -216,16 +212,18 @@
     <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     </script>
     <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <!-- <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script> -->
-    <!-- <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script> -->
-    <!-- <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js"> -->
-    <!-- </script> -->
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="./vendor/datatable/dataTables.bootstrap4.min.js"></script>
 
     <script>
 

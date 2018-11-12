@@ -54,9 +54,10 @@ try {
         `places_des`,
         `injured`, 
         `deceased`, 
-        `note`
+        `note`,
+        `img`
         ) 
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
     $stmt->bindParam('1', $date);
     $stmt->bindParam('2', $time);
@@ -72,6 +73,8 @@ try {
     $stmt->bindParam('12', $injured);
     $stmt->bindParam('13', $decreased);
     $stmt->bindParam('14', $note);
+    $stmt->bindParam('15', $img);
+
     
      $stmt->execute(); //เอาเข้า db
      $id_case = $conn->lastInsertId();
@@ -157,5 +160,7 @@ catch(PDOException $e)
 
     }
 
+    
+    
 
 ?>
