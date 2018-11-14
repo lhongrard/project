@@ -1116,6 +1116,10 @@ $countcar = 0;
          $('#drop option[value="<?=$caseData['places']?>"]').attr('selected','selected');
 
 
+        //ดึงสาเหตุุ
+         $('#drop2 option[value="<?=$caseData['cause']?>"]').attr('selected','selected');
+
+
 
 
 
