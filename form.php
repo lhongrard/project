@@ -40,6 +40,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
     <link href="./css/datepicker.css" rel="stylesheet">
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    
 
 
 </head>
@@ -679,7 +680,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
         
         
 
-        function setCenter(btnLoad, case_location_lat, case_location_lng, getMap) {
+        function setCenter(btnLoad, case_location_lat, case_location_lng, otherplaces_des, getMap ) {
             if (navigator.geolocation) {
                 navigator
                     .geolocation
@@ -689,7 +690,37 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                             lng: position.coords.longitude
                         };
 
+                        // var latlng = "55.397563, 10.39870099999996";
+                        var url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng + "&sensor=false";
+                                $.getJSON(url, function (data) {
+                                        for(var i=0;i<data.results.length;i++) {
+                                        var adress = data.results[i].formatted_address;
+                                        $("#otherplaces_des").val(adress);        
+                            }
+                        });
+                        // console.log(pos);
+                         var geocoder = new google.maps.Geocoder;
+                        
+                        // function geocodeLatLng(geocoder){
+                        //     var input = document.getElementById('pos').value;
+                        //     console.log(input);
+                        //     var latlngStr = input.split(',', 2);
+                        //     var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+                        //     geocoder.geocode({'location': latlng}, 
+                        //         function(results, status) {
+                        //             if (status === 'OK') {
+                        //                 if (results[0]) {
+                        //                     $("#othercase_des").val(results[0].formatted_address);
+                        //                     } else {
+                        //                         window.alert('No results found');
+                        //                     }
+                        //                 } else {
+                        //                 window.alert('Geocoder failed due to: ' + status);
+                        //                 }
+                        //             });
 
+                        // };
+                        
                         for (var i = 0; i < gmarkers.length; i++) {
                             gmarkers[i].setMap(null);
                         }
@@ -703,9 +734,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                 draggable: true
                             });
 
-
-
-
+                        
                         gmarkers.push(marker);
 
 
