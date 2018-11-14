@@ -26,7 +26,6 @@ $stmtCar->execute();
 // print_r($stmtCar->fetch());
 // exit;
 $countcar = 0;
-$countsuff = 0;
 
 ?>
 
@@ -174,7 +173,9 @@ $countsuff = 0;
                                     <h2>แบบบักทึกข้อมูล</h2>
                                 </div>
                                 <div class="card-body card-block">
-                                    <form action="insert_form.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                    <form action="edit_form.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                    <input type="hidden" name="case_id"
+                                                            class="form-control" value="<?=$caseData['case_id']; ?>">
                                         <!-- วัน/เวลา/ผลัด -->
                                         <div class="row form-group">
                                             <div class="col col-md-3">
@@ -432,16 +433,26 @@ $countsuff = 0;
                                         </div>
                                         <div id="car">
                                             <?php while ($row = $stmtCar->fetch()) {
-                                            
+                                                        $countsuff = 0
                                             ?>
-                                        <div>
+                                                    <input type="hidden" name="car_id[]" value="<?=$row["car_id"]; ?>">
+
+                                            <div>
+                                                <?php if($countcar!=0){ ?>
+                                                <div class="btn-close">
+                                                    <button type="button" style="float: right" onclick="remove_car(this)" >
+                                                        <span  style="font-size: 45px;color: red">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <?php } ?>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
                                                         <label class=" form-control-label"><B>รายละเอียดรถที่เกิดเหตุ</B></label>
                                                     </div>
                                                     <div class="col-md-3">
+
                                                         <label for="car_type">ประเภท</label>
-                                                        <select class="form-control" id="car_type<?=$countcar?>" name="car[0][car_type]">
+                                                        <select class="form-control" id="car_type<?=$countcar?>" name="car[<?=$countcar?>][car_type]">
                                                             <script>
                                                             $('#car_type<?=$countcar; ?> option[value="<?=$row['car_type']; ?>"]').attr('selected','selected');
                                                             </script>
@@ -452,12 +463,12 @@ $countsuff = 0;
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>ป้ายทะเบียน</label>
-                                                        <input type="text" name="car[0][car_reg]"
+                                                        <input type="text" name="car[<?=$countcar?>][car_reg]"
                                                             class="form-control" value="<?=$row["car_reg"]; ?>">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>แบรนด์</label>
-                                                        <input type="text" name="car[0][brand]"
+                                                        <input type="text" name="car[<?=$countcar?>][brand]"
                                                             class="form-control" value="<?=$row["brand"]; ?>">
                                                     </div>
                                                 </div>
@@ -465,12 +476,12 @@ $countsuff = 0;
                                                     <div class="col col-md-3"></div>
                                                     <div class="col-md-3">
                                                         <label>รุ่น</label>
-                                                        <input type="text" name="car[0][series]"
+                                                        <input type="text" name="car[<?=$countcar?>][series]"
                                                             class="form-control" value="<?=$row["series"]; ?>">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>สี</label>
-                                                        <input type="text" name="car[0][color]"
+                                                        <input type="text" name="car[<?=$countcar?>][color]"
                                                             class="form-control" value="<?=$row["color"]; ?>">
                                                     </div>
                                                 </div>
@@ -480,8 +491,9 @@ $countsuff = 0;
                                                     $stmtSuff->bindParam(1,$row['car_id']);
                                                     $stmtSuff->execute();
                                                     while ($row_suff = $stmtSuff->fetch()){
-
                                                     ?>
+                                                    
+                                                    <input type="hidden" name="suff_id[]" value="<?=$row_suff["suffer_id"]; ?>">
                                                     <div>
                                                         <div class="row form-group">
                                                             <div class="col col-md-3">
@@ -489,12 +501,12 @@ $countsuff = 0;
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label for="car_type">ชื่อ-สกุล</label>
-                                                                <input type="text" name="car[0][suff][0][name_suff]"
+                                                                <input type="text" name="car[<?=$countcar?>][suff][<?=$countsuff?>][name_suff]"
                                                                     class="form-control" value="<?=$row_suff["name_suff"]; ?>">
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
-                                                                <select class="form-control" name="car[0][suff][0][type_suff]" id="s<?=$countsuff?>">
+                                                                <select class="form-control" name="car[<?=$countcar?>][suff][<?=$countsuff?>][type_suff]" id="s<?=$countsuff?>">
                                                                     <option value="">===โปรดเลือก===</option>
                                                                     <option value="บุคลากร">- บุคลากร</option>
                                                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
@@ -539,22 +551,33 @@ $countsuff = 0;
                                                                 </script>
                                                             </div>
                                                         </div>
+                                                        <?php if($countsuff!=0) { ?>
+                                                        
+                                                        <div class="btn-close-suff">
+                                                            <button type="button" style="position : absolute; right:0; "  onclick="remove_suff(this)" >
+                                                                <span  style="font-size: 45px;color: red">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <?php } ?>
                                                     </div>
+                                                    
                                                     <?php
+                                                    
                                                     $countsuff++;
                                                     }
                                                     ?>
                                                 </div>
-                                                <button class="btn btn-success" data-attr="0" type="button" onclick="add_suff(this)"><i
+                                                <button class="btn btn-success" data-attr="<?=$countcar?>" type="button" onclick="add_suff(this)"><i
                                                         class="fa fa-plus"></i>
                                                     เพิ่มผู้ประสบเหตุ</button>
                                             </div>
-                                        </div><br>
+                                            
                                             <?php 
-                                                $countcar++;    
-                                        }
-                                        
-                                        ?>
+                                            $countcar++;    
+                                            }
+                                            ?>
+                                        </div><br>
+
                                         <!-- 
 
                                         <div>
@@ -884,7 +907,7 @@ $countsuff = 0;
     </script>
 
     <script>
-        var j = 1;
+        var j = <?=$countcar?>;
         $('#add_car').click(function (e) {
             e.preventDefault()
             $("#car").append(`
@@ -993,7 +1016,7 @@ $countsuff = 0;
 
 
         function add_suff(self) {
-            let n =  $(self).closest("div").find(".suff").children().size();
+            let n =  $(self).closest("div").find(".suff").children().length;
             let num = $(self).attr("data-attr");
             $(self).closest("div").find(".suff").append(`<div>
                                                         <div class="row form-group">
@@ -1053,8 +1076,6 @@ $countsuff = 0;
 
 
         function remove_car(self) {
-            //console.log(self)
-            // console.log($(self).closest("div").parent())
             $(self).closest("div").parent().remove()
         }
 
