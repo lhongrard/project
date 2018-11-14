@@ -174,8 +174,12 @@
                                           <td><center><?php echo $row["name_suff"];?></center></td>
                                           <td><center><a href="view.php?case=<?php echo $row['case_id']; ?>"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-search"> ดูข้อมูล</i></button></a></center></td>
                                           <td><center><a href="edit.php?case=<?php echo $row['case_id']; ?>"><button type="button" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o"> แก้ไขข้อมูล</i></button></a></center></td>
-                                          <td><center><a href="JavaScript:if(confirm('ยืนยันการลบข้อมูล?') == true){window.location='delete.php?CardH=<?php echo $row['CardH']; ?>';}">
-                                            <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"> ลบข้อมูล</i></button></a></center></td>
+                                          <td>
+                                                <form action="delete.php" method = "GET" onsubmit="return confirm('ยืนยันการลบข้อมูล')">
+                                                <input type="hidden" name="case_id" value="<?=$row['case_id']; ?>">
+                                                    <center><button type="submit" class="btn-danger btn-sm" href="delete.php"><i class="fa fa-minus"> ลบข้อมูล</i></button></center>
+                                                </form>
+                                            </td>
                                         </tr>
 
                                         <?php
