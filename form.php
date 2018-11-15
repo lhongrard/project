@@ -20,10 +20,12 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet" type='text/css'>
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    
 
     <!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -290,7 +292,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label"><b>จำนวนรถมอเตอร์ไซต์ที่เกิดอุบัติเหตุ</b></label>
+                                                <label class=" form-control-label"><b>จำนวนรถจักรยานยนต์ที่เกิดอุบัติเหตุ</b></label>
                                             </div>
                                             <div class="col-lg-2">
                                                 <input type="text" name="num_motor" class="form-control">
@@ -505,7 +507,7 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                 <label class=" form-control-label"><B>อัพโหลดรูปภาพ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="file" id="file-input" name="img" class="form-control-file">
+                                                <input type="file" id="img" name="img" class="form-control-file">
                                                 
                                             </div>
                                         </div>
@@ -773,8 +775,8 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
             $("#car").append(`
             <div>
                 <div class="btn-close">
-                    <button type="button" style="float: right" onclick="remove_car(this)" >
-                        <span  style="font-size: 45px;color: red">&times;</span>
+                    <button type="button" style="float: right" class="btn-danger btn-sm" onclick="remove_car(this)" >
+                        ลบข้อมูลรถ
                     </button>
                 </div>
                 <div class="row form-group">
@@ -926,10 +928,10 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
                                                             </div>
                                                         </div>
                                                         <div class="btn-close-suff">
-                                                            <button type="button" style="position : absolute; right:0; "  onclick="remove_suff(this)" >
-                                                                <span  style="font-size: 45px;color: red">&times;</span>
+                                                            <button type="button"  class="btn btn-warning btn-sm" onclick="remove_suff(this)" >
+                                                            ลบรายละเอียดผู้ประสบอุบัติเหตุ
                                                             </button>
-                                                        </div>
+                                                        </div><br>
                                                     </div>
             `)
         }

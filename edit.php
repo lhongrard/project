@@ -674,7 +674,7 @@ $countcar = 0;
                                                 <label class=" form-control-label"><B>อัพโหลดรูปภาพ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="file" id="file-input" name="img" class="form-control-file">
+                                                <input type="file" id="img" name="img" class="form-control-file">
                                                 
                                             </div>
                                         </div>

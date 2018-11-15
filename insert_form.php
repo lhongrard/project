@@ -39,6 +39,21 @@ try {
         $cause = $select_cause;
     }
 
+    
+    // upload image
+    $ext = pathinfo(basename($_FILES['img']['name']), PATHINFO_EXTENSION);
+    $new_image_name = 'img_'.uniqid().".".$ext;
+    $target_dir = "./uploads/images/";
+    $target_file = $target_dir . $new_image_name;
+    // uploading
+    $success = move_uploaded_file($_FILES['img']['tmp_name'], $target_file) ;
+    if ($success==FALSE){
+        echo "ขออภัย มีปัญหาเกิดขึ้นขณะทำการอัพโหลดรูปของท่าน";
+        exit();
+    }
+  
+    $img2 = $new_image_name;
+
 
     $stmt = $conn->prepare("INSERT INTO `cases`(
         `date`, 
@@ -73,7 +88,7 @@ try {
     $stmt->bindParam('12', $injured);
     $stmt->bindParam('13', $decreased);
     $stmt->bindParam('14', $note);
-    $stmt->bindParam('15', $img);
+    $stmt->bindParam('15', $img2);
 
     
      $stmt->execute(); //เอาเข้า db
@@ -159,8 +174,5 @@ catch(PDOException $e)
 
 
     }
-
-    
-    
 
 ?>

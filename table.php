@@ -3,9 +3,7 @@
   $connect->set_charset("utf8");
   $query ="SELECT cases.*,car.*,sufferer.* from cases,car,sufferer where cases.case_id=car.case_case_id and car.car_id=sufferer.car_car_id";
   $result = mysqli_query($connect, $query) or die ("error");
-
-
-  ?>
+?>
 
 
 <html lang="en">
@@ -21,8 +19,8 @@
     <!-- Title Page-->
     <title>Accident KKU : ตารางข้อมูล</title>
 
-        <!-- Fontfaces CSS-->
-        <link href="css/font-face.css" rel="stylesheet" media="all">
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -117,7 +115,8 @@
                         <li>
                             <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
-                        </li><hr>
+                        </li>
+                        <hr>
                         <li>
                             <a href="#">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
@@ -138,73 +137,120 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                      <div class="row">
-                        <div class="col col-lg-12">
-                          <section class="card">
-                            <div class="card-body text-secondary">
-                            <div>
-                                <label><h3><b>ตารางแสดงข้อมูลการเกิดอุบัติเหตุ</b></h3></label>
-                                <hr>
-                            </div>
-                              <div class="table-responsive">
-                                   <table id="employee_data" class="table table-striped table-bordered">
-                                        <thead>
-                                             <tr>
-                                                    <td><center>ลำดับที่</center></td>
-                                                  <td><center>วันที่เกิดเหตุ</center></td>
-                                                  <td><center>เวลา</center></td>
-                                                  <td><center>ผลัด</center></td>
-                                                  <td><center>สถานที่เกิดอุบัติเหตุ</center></td>
-              								                    <td><center>ผู้ประสบเหตุ / คู่กรณี</center></td>
-                                                  <td><center>ดูข้อมูล</center></td>
-                                                  <td><center>แก้ไขข้อมูล</center></td>
-                                                  <td><center>ลบข้อมูล</center></td>
-                                             </tr>
-                                        </thead>
-                                        <?php
+                        <div class="row">
+                            <div class="col col-lg-12">
+                                <section class="card">
+                                    <div class="card-body text-secondary">
+                                        <div>
+                                            <label>
+                                                <h3><b>ตารางแสดงข้อมูลการเกิดอุบัติเหตุ</b></h3>
+                                            </label>
+                                            <hr>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table id="employee_data" class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+
+                                                        <td>
+                                                            <center>วันที่เกิดเหตุ</center>
+                                                        </td>
+                                                        <td>
+                                                            <center>เวลา</center>
+                                                        </td>
+                                                        <td>
+                                                            <center>ผลัด</center>
+                                                        </td>
+                                                        <td>
+                                                            <center>สถานที่เกิดอุบัติเหตุ</center>
+                                                        </td>
+                                                        <td>
+                                                            <center>ผู้ประสบเหตุ / คู่กรณี</center>
+                                                        </td>
+                                                        <td>
+                                                            <center>ดูข้อมูล</center>
+                                                        </td>
+                                                        <td>
+                                                            <center>แก้ไขข้อมูล</center>
+                                                        </td>
+                                                        <td>
+                                                            <center>ลบข้อมูล</center>
+                                                        </td>
+                                                    </tr>
+                                                </thead>
+                                                <?php
                                         while($row = mysqli_fetch_array($result))
                                         {
                                           ?>
-                                          <tr>
-                                          <td><center><?php echo $row['case_id'];  ?></center></td>
-                                          <td><center><?php echo $row['date'];  ?></center></td>
-                                          <td><center><?php echo $row["time"];?></center></td>
-                                          <td><center><?php echo $row["duty"];?></center></td>
-                                          <td><center><?php echo $row["places"];?></center></td>
-                                          <td><center><?php echo $row["name_suff"];?></center></td>
-                                          <td><center><a href="view.php?case=<?php echo $row['case_id']; ?>"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-search"> ดูข้อมูล</i></button></a></center></td>
-                                          <td><center><a href="edit.php?case=<?php echo $row['case_id']; ?>"><button type="button" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o"> แก้ไขข้อมูล</i></button></a></center></td>
-                                          <td>
-                                                <form action="delete.php" method = "GET" onsubmit="return confirm('ยืนยันการลบข้อมูล')">
-                                                <input type="hidden" name="case_id" value="<?=$row['case_id']; ?>">
-                                                    <center><button type="submit" class="btn-danger btn-sm" href="delete.php"><i class="fa fa-minus"> ลบข้อมูล</i></button></center>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                                <tr>
 
-                                        <?php
+                                                    <td>
+                                                        <center>
+                                                            <?php echo $row['date'];  ?>
+                                                        </center>
+                                                    </td>
+                                                    <td>
+                                                        <center>
+                                                            <?php echo $row["time"];?>
+                                                        </center>
+                                                    </td>
+                                                    <td>
+                                                        <center>
+                                                            <?php echo $row["duty"];?>
+                                                        </center>
+                                                    </td>
+                                                    <td>
+                                                        <center>
+                                                            <?php echo $row["places"];?>
+                                                        </center>
+                                                    </td>
+                                                    <td>
+                                                        <center>
+                                                            <?php echo $row["name_suff"];?>
+                                                        </center>
+                                                    </td>
+                                                    <td>
+                                                        <center><a href="view.php?case=<?php echo $row['case_id']; ?>"><button
+                                                                    type="button" class="btn btn-info btn-sm"><i class="fa fa-search">
+                                                                        ดูข้อมูล</i></button></a></center>
+                                                    </td>
+                                                    <td>
+                                                        <center><a href="edit.php?case=<?php echo $row['case_id']; ?>"><button
+                                                                    type="button" class="btn btn-warning btn-sm"><i
+                                                                        class="fa fa-pencil-square-o"> แก้ไขข้อมูล</i></button></a></center>
+                                                    </td>
+                                                    <td>
+                                                        <form action="delete.php" method="GET" onsubmit="return confirm('ยืนยันการลบข้อมูล')">
+                                                            <input type="hidden" name="case_id" value="<?=$row['case_id']; ?>">
+                                                            <center><button type="submit" class="btn-danger btn-sm"
+                                                                    href="delete.php"><i class="fa fa-minus-circle"> ลบข้อมูล</i></button></center>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+
+                                                <?php
                                         }
                                         ?>
-                                   </table>
-              			   </div>
+                                            </table>
+                                        </div>
 
+                                    </div>
+                                </section>
                             </div>
-                          </section>
                         </div>
-                      </div>
 
-                        </div>
                     </div>
                 </div>
             </div>
-            <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
         </div>
+        <!-- END MAIN CONTENT-->
+        <!-- END PAGE CONTAINER-->
+    </div>
 
     </div>
 
-     <!-- Jquery JS-->
-     <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -231,30 +277,29 @@
 
     <script>
 
-   	 $(document).ready(function(){
-   		  $('#employee_data').DataTable();
-   	 });
+        $(document).ready(function () {
+            $('#employee_data').DataTable();
+        });
 
-   	 setInterval(function(){
-   	  load_last_notification();
+        setInterval(function () {
+            load_last_notification();
 
 
-   	 },5000);
+        }, 5000);
 
-   	 function load_last_notification()
-   		 {
-   			  $.ajax({
-   				   url:"fetch.php",
-   				   method:"POST",
-   				   success:function(data)
-   				   {
-   					$('.content').html(data);
-   				   }
-   			  })
-   		 }
+        function load_last_notification() {
+            $.ajax({
+                url: "fetch.php",
+                method: "POST",
+                success: function (data) {
+                    $('.content').html(data);
+                }
+            })
+        }
 
     </script>
 </body>
 
 </html>
+
 <!-- end document-->

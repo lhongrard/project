@@ -18,6 +18,7 @@
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet" type='text/css'>
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -244,7 +245,7 @@
                         .event
                         .addListener(casemarker, 'click', (function (marker, i) {
                             return function () {
-                            infowindow.setContent(`<p style="text-align:center; font-size:17px">ตำแหน่งการเกิดอุบัติเหตุที่ : ${value.case_id} <br> ${value.places} </p>`);
+                            infowindow.setContent(`<p style="text-align:center; font-size:17px"> วันที่เกิดอุบัติเหตุ ${value.date} <br> เวลาที่เกิดอุบัติเหตุ ${value.time} นาฬิกา <br> สถานที่เกิดเหตุ -> ${value.places} <br> <img src='./uploads/images/${value.img}' width="600" height="600"> </p>`);
                             infowindow.open(map, marker);
                         }
                     })(casemarker, key));
