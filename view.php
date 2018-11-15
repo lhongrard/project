@@ -44,7 +44,7 @@
     <link href="css/theme.css" rel="stylesheet" media="all">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <!-- <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
@@ -362,29 +362,24 @@
                                     </form></br>
                                     <center><button class="btn btn-success" onclick="printCase()">
                                             <h5>พิมพ์หน้านี้</h5>
-                                        </button></center>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </button></center><hr>
                                     <center><a href=javascript:history.back(1)><button type="button" class="btn btn-primary">
                                                 <h5>กลับ</h5>
                                             </button></a></center>
-
-                                
                                 </font>
-                            </div>
+                                </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-        </div>
-    </div>
-    </div>
+                    </div>
+
+     </body>     
+   
     <!-- END MAIN CONTENT-->
     <!-- END PAGE CONTAINER-->
-    </div>
-
-    </div>
+   
+    
 
     <!-- Jquery JS-->
     <!-- <script src="vendor/jquery-3.2.1.min.js"></script> -->
@@ -438,7 +433,7 @@
             window.print();
         }   
     </script>
-</body>
+
 
 </html>
 <!-- end document-->
