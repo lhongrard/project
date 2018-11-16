@@ -62,6 +62,9 @@ require('connect.php');
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">เข้าสู่ระบบ</button>
+                                <hr>
+                                <center><a href="#"><button class="au-btn au-btn--block au-btn--blue m-b-20" type="button"> >> ผู้ใช้งานทั่วไป << </button></a></center>
+                                
 
                             </form>
 

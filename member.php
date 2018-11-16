@@ -8,7 +8,7 @@
     $password = $_POST['password'];
     $hashedPassword = $password;
 
-	$sql = "SELECT * from member where username = '$username'";
+    $sql = "SELECT * from member where username = '$username' ";
 	$query = $conn->query($sql);
 	$row = $query->fetch_assoc();
 	$expectedPassword = $row['password'];
