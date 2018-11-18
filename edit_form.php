@@ -7,11 +7,56 @@ include 'connect.php';
 
 try{
 
-
+        $date = $_POST['date'];
+        $time= $_POST['time'];   
+        $duty= $_POST['duty'];
+        $selectPlace= $_POST['select_places'];
+        $otherPlace= $_POST['otherplaces_des']; 
+        $lat= $_POST['case_location_lat'];
+        $lng= $_POST['case_location_lng'];
+        $numO= $_POST['num_motor'];
+        $numC= $_POST['nub_car'];
+        $numM= $_POST['num_other'];
+        $cause= $_POST['cause'];
+        $otherDes= $_POST['othercause_des'];
+        $inju= $_POST['injured'];
+        $decreased= $_POST['decreased'];
+        $note= $_POST['note'];
         $id_case = $_POST['case_id'];
+
+        
+
+        $sql2 = "UPDATE `cases` SET `date`='$date',
+            `time`='$time',
+            `duty`='$duty',
+            `places`='$selectPlace',
+            `places_des`='$otherPlace',
+            `lat`='$lat',
+            `lng`='$lng',
+            `num_other`='$numO',
+            `num_car`='$numC',
+            `num_motor`='$numM',
+            `cause`='$cause',
+            `othercause_des`='$otherDes',
+            `injured`='$inju',
+            `deceased`='$decreased',
+            `note`='$note'
+            WHERE `case_id`='$id_case'
+            ";
+            $stmt99 = $conn->prepare($sql2);
+             $stmt99->execute(); //เอาเข้า db
+
+
+            
+        
+       
+        
         $cars = $_POST["car"];
         
         foreach($cars as $car){
+
+    
+
             $stmt2 = $conn->prepare("INSERT INTO `car`(
                 `case_case_id`,
                 `car_type`,
@@ -88,15 +133,17 @@ try{
     echo "<script type='text/javascript'> 
         
         alert('แก้ไขข้อมูลสำเสร็จแล้ว');
-        window.location.href='edit.php?case=$id_case'
+        window.location.href='table.php'
         </script>";
 }
 catch(PDOException $e)
 {
+    // echo $e;
+    // exit();
     echo "<script type='text/javascript'> 
         
         alert('แก้ไขข้อมูลไม่สำเสร็จ ติดต่อผู้ดูแลระบบ');
-        window.location.href='edit.php?case=$id_case'
+        window.location.href='table.php'
         </script>";
     }
 

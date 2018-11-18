@@ -42,7 +42,7 @@ $countcar = 0;
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Accident KKU : บันทึกข้อมูล</title>
+    <title>Accident KKU : แก้ไขข้อมูลอุบัติเหตุ </title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -170,7 +170,7 @@ $countcar = 0;
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2>แบบบักทึกข้อมูล</h2>
+                                    <h2>แก้ไขข้อมูลอุบัติเหตุ</h2>
                                 </div>
                                 <div class="card-body card-block">
                                     <form action="edit_form.php" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -188,7 +188,7 @@ $countcar = 0;
                                                     </div>
                                                     <input id="date1" type="text" class="form-control" data-provide="datepicker"
                                                         data-date-language="th-th" placeholder="คลิ๊กเพื่อระบุวันที่" aria-describedby="basic-addon1" value="<?=$date2; ?>">
-                                                    <input id="date" name="date" type="hidden">
+                                                    <input id="date" name="date" style="color:white;" >
                                                 </div>
                                             </div>
                                         </div>
@@ -669,15 +669,7 @@ $countcar = 0;
                                                 <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label class=" form-control-label"><B>อัพโหลดรูปภาพ</B></label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="file" id="img" name="img" class="form-control-file">
-                                                
-                                            </div>
-                                        </div>
+                                       
 
 
                                     </div>
@@ -686,6 +678,11 @@ $countcar = 0;
                                                 <i class="fa fa-save"></i> <B>บันทึกข้อมูล</B>
                                                 </button>
                                         </center>
+                                        <hr>
+                                    <center><a href=javascript:history.back(1)><button type="button" class="btn btn-danger" >
+                                                <h5 style="color:white;">ย้อนกลับ</h5>
+                                            </button></a></center>
+                                </font>
                                     </div>
                                 </form>
                             </div>

@@ -215,9 +215,9 @@
                                                     </td>
                                                     <td>
                                                         <form action="delete_admin.php" method="GET" onsubmit="return confirm('ยืนยันการลบข้อมูล')">
-                                                            <input type="hidden" name="case_id" value="<?=$row['case_id']; ?>">
+                                                            <input type="hidden" name="user" value="<?=$row['username']; ?>">
                                                             <center><button type="submit" class="btn-danger btn-sm"
-                                                                    href="delete.php"><i class="fa fa-minus-circle"> ลบข้อมูล</i></button></center>
+                                                                    href="delete_admin.php"><i class="fa fa-minus-circle"> ลบข้อมูล</i></button></center>
                                                         </form>
                                                     </td>
                                                 </tr>

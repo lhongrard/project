@@ -9,6 +9,7 @@
   ?>
 
 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -132,6 +133,7 @@
                 </nav>
             </div>
         </aside>
+</div>
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
@@ -150,11 +152,11 @@
                                     <div class="card-header">
                                         <h2><strong>รายละเอียดการเกิดอุบัติเหตุ</strong></h2>
                                     </div>
-                                    <div class="card-body card-block">
+                                    <div class="card-body card-block" style="font-size:18px;">
                                         <form class="form-horizontal">
                                             <?php		while($result=mysqli_fetch_array($query,MYSQLI_BOTH))
                                         { ?>
-                                        <font size="4px">
+                                        
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label class="form-control-label">วันที่เกิดอุบัติเหตุ :</label>
@@ -220,160 +222,164 @@
                                                 <div class="col-lg-5">
                                                     <?php echo $result["lng"];?>
                                                 </div>
-                                    </div>
-                                    <hr>
+                                            </div>
+                                            <hr>
 
-                                    <h3>รายละเอียดรถที่เกิดอุบัติเหตุ</h3><br>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label"> จำนวนรถมอเตอร์ไซต์ที่เกิดอุบัติเหตุ :</label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["num_motor"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">จำนวนรถยนต์ที่เกิดอุบัติเหตุ : </label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["num_car"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">จำนวนรถประเภทอื่น ๆ ที่เกิดอุบัติเหตุ :
-                                            </label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["num_other"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">ประเภทรถ : </label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["car_type"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">ป้ายทะเบียน : </label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["car_reg"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">แบรนด์ : </label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["brand"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">รุ่น : </label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["series"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">สี : </label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["color"];?>
-                                        </div>
-                                    </div>
-                                    <hr>
+                                            <h3>รายละเอียดรถที่เกิดอุบัติเหตุ</h3><br>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label"> จำนวนรถมอเตอร์ไซต์ที่เกิดอุบัติเหตุ :</label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["num_motor"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">จำนวนรถยนต์ที่เกิดอุบัติเหตุ : </label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["num_car"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">จำนวนรถประเภทอื่น ๆ ที่เกิดอุบัติเหตุ :
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["num_other"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">ประเภทรถ : </label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["car_type"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">ป้ายทะเบียน : </label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["car_reg"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">แบรนด์ : </label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["brand"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">รุ่น : </label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["series"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">สี : </label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["color"];?>
+                                                </div>
+                                            </div>
+                                            <hr>
 
-                                    <h3>รายละเอียดผู้ประสบอุบัติเหตุ</h3><br>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">ประเภทผู้ประสบอุบัติเหตุ :</label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["type_suff"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">ชื่อ-สกุล :</label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["name_suff"];?>
-                                        </div>
-                                    </div>
-                                    <hr>
+                                            <h3>รายละเอียดผู้ประสบอุบัติเหตุ</h3><br>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">ประเภทผู้ประสบอุบัติเหตุ :</label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["type_suff"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">ชื่อ-สกุล :</label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["name_suff"];?>
+                                                </div>
+                                            </div>
+                                            <hr>
 
-                                    <h3>รายละเอียดสาเหตุ</h3><br>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">สาเหตุ :</label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["cause"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">จำนวนผู้บาดเจ็บ :</label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["injured"];?>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">จำนวนผู้เสียชีวิต :</label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["deceased"];?>
-                                        </div>
-                                    </div>
-                                    <hr>
+                                            <h3>รายละเอียดสาเหตุ</h3><br>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">สาเหตุ :</label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["cause"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">จำนวนผู้บาดเจ็บ :</label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["injured"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">จำนวนผู้เสียชีวิต :</label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["deceased"];?>
+                                                </div>
+                                            </div>
+                                            <hr>
 
-                                    <h3>หมายเหตุ</h3><br>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label">หมายเหตุเพิ่มเติม</label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <?php echo $result["note"];?>
-                                        </div>
-                                    </div><hr>
+                                            <h3>หมายเหตุ</h3><br>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">หมายเหตุเพิ่มเติม</label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["note"];?>
+                                                </div>
+                                            </div>
+                                            <hr>
 
-                                    <h3>รูป</h3>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label class="form-control-label"></label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <img src="./uploads/images/<?php echo $result["img"];?>" >
-                                        </div>
-                                    </div>
-
-                                    <?php };
-                            ?>
-                                    </form></br>
+                                            <h3>รูป</h3>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label"></label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <img src="./uploads/images/<?php echo $result["img"];?>" >
+                                                </div>
+                                            </div>
+                                    <div class="card-footer">
                                     <center><button class="btn btn-success" onclick="printCase()">
-                                            <h5>พิมพ์หน้านี้</h5>
-                                        </button></center><hr>
-                                    <center><a href=javascript:history.back(1)><button type="button" class="btn btn-primary">
-                                                <h5>กลับ</h5>
+                                                <h5 style="color:white;">พิมพ์หน้านี้</h5>
+                                            </button></center><hr>
+                                    <center><a href=javascript:history.back(1)><button type="button" class="btn btn-danger">
+                                                <h5 style="color:white;">ย้อนกลับ</h5>
                                             </button></a></center>
-                                </font>
-                                </div>
+                                    </div>
+                                    <?php };
+                                            ?>
+                                         
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-                    </div>
+        </div>
 
+    </div>
+</div>
      </body>     
    
     <!-- END MAIN CONTENT-->

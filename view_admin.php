@@ -12,7 +12,7 @@
 
   ?>
 
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -141,6 +141,7 @@
                 </nav>
             </div>
         </aside>
+</div>
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
@@ -211,8 +212,8 @@
                             ?>
                                     </form></br>
                                     <hr>
-                                    <center><a href=javascript:history.back(1)><button type="button" class="btn btn-primary">
-                                                <h5>กลับ</h5>
+                                    <center><a href=javascript:history.back(1)><button type="button" class="btn btn-primary" >
+                                                <h5 style="color:white;">ย้อนกลับ</h5>
                                             </button></a></center>
                                 </font>
                                 </div>
@@ -220,7 +221,7 @@
                     </div>
                 </div>
             </div>
-                    </div>
+        
 
      </body>     
    
@@ -253,34 +254,6 @@
     <!-- Main JS-->
     <script src="js/main.js"></script>
 
-    <script>
-
-        $(document).ready(function () {
-            $('#employee_data').DataTable();
-        });
-
-        setInterval(function () {
-            load_last_notification();
-
-
-        }, 5000);
-
-        function load_last_notification() {
-            $.ajax({
-                url: "fetch.php",
-                method: "POST",
-                success: function (data) {
-                    $('.content').html(data);
-                }
-            })
-        }
-
-    </script>
-    <script>
-        function printCase() {
-            window.print();
-        }   
-    </script>
 
 
 </html>

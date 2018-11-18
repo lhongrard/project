@@ -1,3 +1,12 @@
+<?php
+include 'member.php';
+$nameMem = $_GET['name_mem'];
+echo $nameMem;
+exit();
+$Namemm = $_SESSION["name_mem"];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,6 +100,10 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+                        <li>
+                            
+                                <h2> <?php echo $_SEESION["name_mem"];?> </h2>
+                        </li>
                         <li class="active has-sub">
                             <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>

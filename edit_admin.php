@@ -1,10 +1,29 @@
 <?php
+
 include 'connect.php';
-$username = $_GET['user'];
-$stmt = $conn->prepare("SELECT * FROM member,role_type WHERE member.username = ? AND role_type.role_id=member.role_type_role_id");
-$stmt->bindParam(1,$username);
+$usern = $_GET['user'];
+// $username = '"'.$usern.'"';
+$stmt = $conn->prepare("SELECT * FROM member,role_type WHERE member.username=? ANd member.role_type_role_id =
+role_type.role_id");
+$stmt->bindParam(1,$usern);
 $stmt->execute();
-// echo $username;
+$caseData = $stmt->fetch();
+
+// echo ($caseData);
+// exit();
+// exit();
+// $connect = mysqli_connect("localhost", "root", "", "project1");
+// $connect->set_charset("utf8");
+// $usern = $_GET['user'];
+// $username = '"'.$usern.'"';
+
+
+// $sql ="SELECT * from cases,car,sufferer where cases.case_id=$case and car.car_id=cases.case_id AND
+// sufferer.suffer_id=";
+// $sql ="SELECT * FROM member,role_type WHERE member.username = $username ";
+// $query = mysqli_query($connect, $sql) or die ("error");
+
+// echo ($query);
 // exit();
 
 ?>
@@ -31,7 +50,7 @@ $stmt->execute();
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    
+
 
     <!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -48,7 +67,7 @@ $stmt->execute();
     <link href="./css/datepicker.css" rel="stylesheet">
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
-    
+
 
 
 </head>
@@ -89,12 +108,12 @@ $stmt->execute();
                             <a href="map.html">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li>
-                        
+
                         <li>
                             <a href="table_admin.php">
                                 <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
                         </li>
-                        
+
                         <li>
                             <a href="#">
                                 <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
@@ -131,7 +150,8 @@ $stmt->execute();
                         <li>
                             <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
-                        </li><hr>
+                        </li>
+                        <hr>
                         <li class="active has-sub">
                             <a href="table_admin.php">
                                 <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
@@ -165,19 +185,20 @@ $stmt->execute();
                                     <h2>แบบฟอร์มกรอกรายละเอียดสมาชิก</h2>
                                 </div>
                                 <div class="card-body card-block" style="font-size:16px;">
-                                <form class="form-horizontal">
-                                  
-                                    <div class="row form-group">
+                                    <form action="edit_admin_form.php"  method="post" class="form-horizontal">
+                                
+
+                                        <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label class=" form-control-label"><B> ชื่อ - สกุล :</B></label>
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="input-group mb-3">
-                                                    <input name="name" type="text" class="form-control" value="<?=$sql['name_mem']; ?>">
+                                                    <input name="name" type="text" class="form-control" value="<?=$caseData['name_mem']; ?>" >
                                                 </div>
                                                 <span class="help-block-none" style="font-size:16px;">
-                                                    ( ตัวอย่างเช่น : ฉลองราชย์  วานมนตรี )</span>
-                                            
+                                                    ( ตัวอย่างเช่น : ฉลองราชย์ วานมนตรี )</span>
+
                                             </div>
                                         </div><br>
 
@@ -187,10 +208,11 @@ $stmt->execute();
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="input-group mb-3">
-                                                    <input name="username" type="text" class="form-control">
+                                                    <input name="username" type="text" class="form-control" value="<?=$caseData['username']; ?>" readonly>
                                                 </div>
                                                 <span class="help-block-none" style="font-size:16px;">
-                                                    *ตัวอักษรภาษาอังกฤษเท่านั้น <br> ( ตัวอย่างเช่น : accident1, prasert99 )</span>
+                                                    *ตัวอักษรภาษาอังกฤษเท่านั้น <br> ( ตัวอย่างเช่น : accident1,
+                                                    prasert99 )</span>
                                             </div>
                                         </div><br>
                                         <div class="row form-group">
@@ -199,10 +221,11 @@ $stmt->execute();
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="input-group mb-3">
-                                                    <input name="password" type="text" class="form-control">
+                                                    <input name="password" type="text" class="form-control" value="<?=$caseData['login_password']; ?>">
                                                 </div>
                                                 <span class="help-block-none" style="font-size:16px;">
-                                                    *ตัวอักษรภาษาอังกฤษหรือตัวเลขเท่านั้น <br> ( ตัวอย่างเช่น : mypassword123, 19101996 )</span>
+                                                    *ตัวอักษรภาษาอังกฤษหรือตัวเลขเท่านั้น <br> ( ตัวอย่างเช่น :
+                                                    mypassword123, 19101996 )</span>
                                             </div>
                                         </div><br>
                                         <div class="row form-group">
@@ -211,61 +234,66 @@ $stmt->execute();
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="input-group mb-3">
-                                                    <input name="phone" type="text" class="form-control">
+                                                    <input name="phone" type="text" class="form-control" value="<?=$caseData['phone']; ?>">
                                                 </div>
                                                 <span class="help-block-none" style="font-size:16px;">
                                                     ( ตัวอย่างเช่น : 0991234567 )</span>
                                             </div>
-                                        </div><hr>
-                                        
+                                        </div>
+                                        <hr>
+
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label"><h4><B>ประเภทผู้ใช้งาน</B></h4></label>
+                                                <label class=" form-control-label">
+                                                    <h4><B>ประเภทผู้ใช้งาน</B></h4>
+                                                </label>
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <div class="form-check">
                                                     <div class="radio">
-                                                    <input type="radio" id="radio1" name="role" value="1"
-                                                                class="form-check-input" checked="checked">
+                                                        <input type="radio" id="radio1" name="role" value="1" class="form-check-input"
+                                                            checked="checked">
                                                         <label for="radio1" class="form-check-label ">
-                                                             Admin (ผู้ดูแลระบบ)
+                                                            Admin (ผู้ดูแลระบบ)
                                                         </label>
                                                     </div>
                                                     <div class="radio">
-                                                    <input type="radio" id="radio2" name="role" value="2"
-                                                                class="form-check-input" >
+                                                        <input type="radio" id="radio2" name="role" value="2" class="form-check-input">
                                                         <label for="radio2" class="form-check-label ">
-                                                             Manager (ผู้บริหาร)
+                                                            Manager (ผู้บริหาร)
                                                         </label>
                                                     </div>
                                                     <div class="radio">
-                                                    <input type="radio" id="radio3" name="role" value="3"
-                                                                class="form-check-input">
+                                                        <input type="radio" id="radio3" name="role" value="3" class="form-check-input">
                                                         <label for="radio3" class="form-check-label ">
-                                                             Officer (พนักงานทั่วไป)
+                                                            Officer (พนักงานทั่วไป)
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                                                        
-                                    <div class="card-footer">
-                                        <center><button type="submit" class="btn btn-primary btn-sm">
-                                                <i class="fa fa-save"></i> <B>บันทึกข้อมูล</B>
+                                        </div>                             
+
+                                        <div class="card-footer">
+                                            <center><button type="submit" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-save"></i> <B>แก้ไขข้อมูล</B>
                                                 </button>
-                                        </center>
-                                    </div>
-                                </form>
+                                            </center>
+                                            <hr>
+                                            <center><a href=javascript:history.back(1)><button type="button" class="btn btn-danger">
+                                                <h5 style="color:white;">ย้อนกลับ</h5>
+                                            </button></a></center>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     </div>
-                                       
+
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
@@ -289,8 +317,14 @@ $stmt->execute();
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+<script>
+                                        // ดึงประเภทจาก db
+                                        var value = '<?=$caseData["role_type_role_id"]; ?>';
+                                       $("input[name=role][value=" + value + "]").attr('checked', 'checked');
+                                        
 
-  
+</script>
+
 </body>
 
 </html>

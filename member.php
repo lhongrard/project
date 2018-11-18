@@ -1,6 +1,7 @@
 <?php
-    // session_start();
-    require('connect.php');
+session_start();
+    require('conDB.php');
+    
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -8,23 +9,29 @@
     $password = $_POST['password'];
     $hashedPassword = $password;
 
-    $sql = "SELECT * from member where username = '$username' ";
+
+    $sql = "SELECT * from `member` where `username` ='$username' ";
 	$query = $conn->query($sql);
-	$row = $query->fetch_assoc();
-	$expectedPassword = $row['password'];
+    $row = $query->fetch_assoc();
+    $expectedPassword = $row['login_password'];
+    
+    //   echo $hashedPassword,$expectedPassword;
+    //     exit();
 
     if ($hashedPassword == $expectedPassword) {
         if($row['role_type_role_id'] == '1'){
-            // $_SESSION["CardH"] = $row['CardH'];
+            $_SESSION["name_mem"] = $row['name_mem'];
         header("Location: index_admin.php");
         exit();
         }
         else if($row['role_type_role_id'] == '3'){
-            // $_SESSION["CardH"] = $row['CardH'];
+            $_SESSION["name_mem"] = $row['name_mem'];
         header("Location: index_officer.php");
         exit();
         }
         else if($row['role_type_role_id'] == '2'){
+            $_SESSION["name_mem"] = $row['name_mem'];
+
         header("Location: index_manager.php");
         exit();
         }
@@ -33,6 +40,7 @@
         echo "<script>";
 			  echo "alert('รหัสผู้ใช้ หรือ รหัสผ่าน ผิด กรุณาใส่ข้อมูลใหม่ !');";
         echo "location='login.php'";
-			  echo "</script>";
+              echo "</script>";
+    
 }
 ?>
