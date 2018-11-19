@@ -45,14 +45,16 @@ $countcar = 0;
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Accident KKU : แก้ไขข้อมูลอุบัติเหตุ </title>
+    <title>Accident KKU : บันทึกข้อมูล</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet" type='text/css'>
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    
 
     <!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
@@ -198,8 +200,8 @@ $countcar = 0;
                                                         <span class="input-group-text"><i class="fa fa-calendar" id="basic-addon1"></i></span>
                                                     </div>
                                                     <input id="date1" type="text" class="form-control" data-provide="datepicker"
-                                                        data-date-language="th-th" placeholder="คลิ๊กเพื่อระบุวันที่" aria-describedby="basic-addon1" value="<?=$date2; ?>">
-                                                    <input id="date" name="date" style="color:white;" >
+                                                        data-date-language="th-th" placeholder="คลิ๊กเพื่อระบุวันที่" aria-describedby="basic-addon1" value="<?=$date2; ?>" required>
+                                                    <input id="date" name="date" style="color:white;" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -305,7 +307,7 @@ $countcar = 0;
                                                 <input id="time" name="time" type="hidden">
                                             </div>
                                         </div>
-                                        <div class="row form-group">
+                                        <!-- <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label class=" form-control-label"><B>ผลัด</B></label>
                                             </div>
@@ -334,7 +336,7 @@ $countcar = 0;
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- วัน/เวลา/ผลัด -->
 
                                         <!-- สถานที่เกิดอุบัติเหตุ -->
@@ -344,7 +346,7 @@ $countcar = 0;
                                                 <label class=" form-control-label"><B>สถานที่เกิดอุบัติเหตุ</B></label>
                                             </div>
                                             <div class="col-md-9">
-                                                <select name="select_places" id="drop" class="form-control">
+                                                <select name="select_places" id="drop" class="form-control" required>
                                                     <option value=""> ===โปรดเลือก=== </option>
                                                     <option value="วงเวียนคณะมนุษยศาสตร์และสังคมศาสตร์">วงเวียนคณะมนุษยศาสตร์และสังคมศาสตร์</option>
                                                     <option value="วงเวียนหอพักชายที่ 16">วงเวียนหอพักชายที่ 16 </option>
@@ -414,7 +416,8 @@ $countcar = 0;
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
+                                        <?php /*
+                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label class=" form-control-label"><b>จำนวนรถมอเตอร์ไซต์ที่เกิดอุบัติเหตุ</b></label>
                                             </div>
@@ -441,7 +444,8 @@ $countcar = 0;
                                                 <input type="text" name="num_other" class="form-control" value="<?=$caseData['num_other']; ?>">
                                                 <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
-                                        </div>
+                                        </div> 
+                                        */ ?>
                                         <div id="car">
                                             <?php while ($row = $stmtCar->fetch()) {
                                                         $countsuff = 0
@@ -475,12 +479,12 @@ $countcar = 0;
                                                     <div class="col-md-3">
                                                         <label>ป้ายทะเบียน</label>
                                                         <input type="text" name="car[<?=$countcar?>][car_reg]"
-                                                            class="form-control" value="<?=$row["car_reg"]; ?>">
+                                                            class="form-control" value="<?=$row["car_reg"]; ?>" required>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>แบรนด์</label>
                                                         <input type="text" name="car[<?=$countcar?>][brand]"
-                                                            class="form-control" value="<?=$row["brand"]; ?>">
+                                                            class="form-control" value="<?=$row["brand"]; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
@@ -488,12 +492,12 @@ $countcar = 0;
                                                     <div class="col-md-3">
                                                         <label>รุ่น</label>
                                                         <input type="text" name="car[<?=$countcar?>][series]"
-                                                            class="form-control" value="<?=$row["series"]; ?>">
+                                                            class="form-control" value="<?=$row["series"]; ?>" required>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>สี</label>
                                                         <input type="text" name="car[<?=$countcar?>][color]"
-                                                            class="form-control" value="<?=$row["color"]; ?>">
+                                                            class="form-control" value="<?=$row["color"]; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="suff">
@@ -513,12 +517,12 @@ $countcar = 0;
                                                             <div class="col-md-3">
                                                                 <label for="car_type">ชื่อ-สกุล</label>
                                                                 <input type="text" name="car[<?=$countcar?>][suff][<?=$countsuff?>][name_suff]"
-                                                                    class="form-control" value="<?=$row_suff["name_suff"]; ?>">
+                                                                    class="form-control" value="<?=$row_suff["name_suff"]; ?>" required>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
                                                                 <select class="form-control" name="car[<?=$countcar?>][suff][<?=$countsuff?>][type_suff]" id="s<?=$countsuff?>">
-                                                                    <option value="">===โปรดเลือก===</option>
+                                                                    
                                                                     <option value="บุคลากร">- บุคลากร</option>
                                                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
                                                                     <optgroup label="นักศึกษา">
@@ -608,7 +612,7 @@ $countcar = 0;
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <select name="cause" id="drop2" class="form-control">
-                                                    <option value=""> ===โปรดเลือก=== </option>
+                                                    
                                                     <option value="ขับรถเสียหลักเอง หรือล้มเอง">ขับรถเสียหลักเอง
                                                         หรือล้มเอง </option>
                                                     <option value="ขับรถชนกันหรือชนท้าย (ระหว่างรถยนต์ - รถจักรยานยนต์)">ขับรถชนกันหรือชนท้าย
@@ -656,7 +660,7 @@ $countcar = 0;
                                                 <label class=" form-control-label"><B>จำนวผู้บาดเจ็บ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" name="injured" class="form-control" value="<?=$caseData['injured']; ?>">
+                                                <input type="text" name="injured" class="form-control" value="<?=$caseData['injured']; ?>" required>
                                                 <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
@@ -665,7 +669,7 @@ $countcar = 0;
                                                 <label for="text" class=" form-control-label"><B>จำนวนผู้เสียชีวิต</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" name="decreased" class="form-control" value="<?=$caseData['deceased']; ?>">
+                                                <input type="text" name="decreased" class="form-control" value="<?=$caseData['deceased']; ?>" required>
                                                 <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
@@ -706,8 +710,8 @@ $countcar = 0;
 
     </div>
                                        
-    <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
+   <!-- Jquery JS-->
+   <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -940,12 +944,12 @@ $countcar = 0;
                     <div class="col-md-3">
                         <label>ป้ายทะเบียน</label>
                         <input type="text" name="car[${j}][car_reg]"
-                            class="form-control">
+                            class="form-control" required>
                     </div>
                     <div class="col-md-3">
                         <label>แบรนด์</label>
                         <input type="text" name="car[${j}][brand]"
-                            class="form-control">
+                            class="form-control" required>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -953,12 +957,12 @@ $countcar = 0;
                     <div class="col-md-3">
                         <label>รุ่น</label>
                         <input type="text" name="car[${j}][series]"
-                            class="form-control">
+                            class="form-control" required>
                     </div>
                     <div class="col-md-3">
                         <label>สี</label>
                         <input type="text" name="car[${j}][color]"
-                            class="form-control">
+                            class="form-control" required>
                     </div>
                 </div>
                 <div class="suff">
@@ -970,12 +974,11 @@ $countcar = 0;
                             <div class="col-md-3">
                                 <label for="car_type">ชื่อ-สกุล</label>
                                 <input type="text" name="car[${j}][suff][0][name_suff]"
-                                    class="form-control">
+                                    class="form-control" required>
                             </div>
                             <div class="col-md-3">
                                 <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
                                 <select class="form-control" name="car[${j}][suff][0][type_suff]">
-                                    <option value="">===โปรดเลือก===</option>
                                     <option value="บุคลากร">- บุคลากร</option>
                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
                                     <optgroup label="นักศึกษา">
@@ -1033,12 +1036,12 @@ $countcar = 0;
                                                             <div class="col-md-3">
                                                                 <label for="car_type">ชื่อ-สกุล</label>
                                                                 <input type="text" name="car[${num}][suff][${n}][name_suff]"
-                                                                    class="form-control">
+                                                                    class="form-control" required>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
                                                                 <select class="form-control" name="car[${num}][suff][${n}][type_suff]">
-                                                                    <option value="">===โปรดเลือก===</option>
+                                                                    
                                                                     <option value="บุคลากร">- บุคลากร</option>
                                                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
                                                                     <optgroup label="นักศึกษา">

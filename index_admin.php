@@ -61,7 +61,7 @@ $Namemm = $_SESSION["name_mem"];
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="index_officer.php">
+                            <a class="js-arrow" href="index_admin.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
                         <li>
                             <a href="form.php">

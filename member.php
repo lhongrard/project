@@ -21,17 +21,19 @@ session_start();
     if ($hashedPassword == $expectedPassword) {
         if($row['role_type_role_id'] == '1'){
             $_SESSION["name_mem"] = $row['name_mem'];
-        header("Location: index_admin.php");
+            $_SESSION["role_type"] = $row['role_type_role_id'];
+        header("Location: index_officer.php");
         exit();
         }
         else if($row['role_type_role_id'] == '3'){
             $_SESSION["name_mem"] = $row['name_mem'];
+            $_SESSION["role_type"] = $row['role_type_role_id'];
         header("Location: index_officer.php");
         exit();
         }
         else if($row['role_type_role_id'] == '2'){
             $_SESSION["name_mem"] = $row['name_mem'];
-
+            $_SESSION["role_type"] = $row['role_type_role_id'];
         header("Location: index_officer.php");
         exit();
         }

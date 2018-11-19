@@ -9,14 +9,13 @@ try{
 
         $date = $_POST['date'];
         $time= $_POST['time'];   
-        $duty= $_POST['duty'];
         $selectPlace= $_POST['select_places'];
         $otherPlace= $_POST['otherplaces_des']; 
         $lat= $_POST['case_location_lat'];
         $lng= $_POST['case_location_lng'];
-        $numO= $_POST['num_motor'];
-        $numC= $_POST['nub_car'];
-        $numM= $_POST['num_other'];
+        $numO= 0;
+        $numC= 0;
+        $numM= 0;
         $cause= $_POST['cause'];
         $otherDes= $_POST['othercause_des'];
         $inju= $_POST['injured'];
@@ -26,25 +25,18 @@ try{
 
         
 
-        $sql2 = "UPDATE `cases` SET `date`='$date',
-            `time`='$time',
-            `duty`='$duty',
-            `places`='$selectPlace',
-            `places_des`='$otherPlace',
-            `lat`='$lat',
-            `lng`='$lng',
-            `num_other`='$numO',
-            `num_car`='$numC',
-            `num_motor`='$numM',
-            `cause`='$cause',
-            `othercause_des`='$otherDes',
-            `injured`='$inju',
-            `deceased`='$decreased',
-            `note`='$note'
-            WHERE `case_id`='$id_case'
-            ";
-            $stmt99 = $conn->prepare($sql2);
-             $stmt99->execute(); //เอาเข้า db
+     
+    $time1 = date("H:i:s",strtotime($time));
+    $startM = date("H:i:s",strtotime("08:00:00"));
+    $startN = date("H:i:s",strtotime("16:00:00"));
+    $startE = date("H:i:s",strtotime("23:59:00"));
+    if($time1 >= $startM && $time1 < $startN){
+        $duty = "เช้า";
+    }else if($time1 >= $startN && $time1 <= $startE){
+        $duty = "บ่าย";
+    }else {
+        $duty = "ดึก";
+    }
 
 
             
@@ -55,7 +47,13 @@ try{
         
         foreach($cars as $car){
 
-    
+            if($car["car_type"] == 'รถยนต์'){
+                $numC++;
+            }else if($car["car_type"] == 'รถจักรยานยนต์'){
+                $numM++;
+            }else if($car["car_type"] == 'รถอื่นๆ'){
+                $numO++;
+            }
 
             $stmt2 = $conn->prepare("INSERT INTO `car`(
                 `case_case_id`,
@@ -129,6 +127,26 @@ try{
         $stmt5->bindParam(1,$id);
         $stmt5->execute();
     }
+
+    $sql2 = "UPDATE `cases` SET `date`='$date',
+    `time`='$time',
+    `duty`='$duty',
+    `places`='$selectPlace',
+    `places_des`='$otherPlace',
+    `lat`='$lat',
+    `lng`='$lng',
+    `num_other`='$numO',
+    `num_car`='$numC',
+    `num_motor`='$numM',
+    `cause`='$cause',
+    `othercause_des`='$otherDes',
+    `injured`='$inju',
+    `deceased`='$decreased',
+    `note`='$note'
+    WHERE `case_id`='$id_case'
+    ";
+    $stmt99 = $conn->prepare($sql2);
+     $stmt99->execute(); //เอาเข้า db
 
     echo "<script type='text/javascript'> 
         

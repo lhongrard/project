@@ -20,6 +20,8 @@ $row2 = $result5->fetch(PDO::FETCH_ASSOC);
 
 include 'member.php';
 $Namemm = $_SESSION["name_mem"];
+$role_type = $_SESSION["role_type"];
+
 ?>
 
 
@@ -96,6 +98,15 @@ $Namemm = $_SESSION["name_mem"];
                             <a href="map.html">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li>
+                        <?php
+                            if($role_type == '1'){
+
+                                echo '<li>
+                                <a href="table_admin.php">
+                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
+                            </li>';
+                            }
+                        ?>
                         <li>
                             <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
@@ -136,6 +147,15 @@ $Namemm = $_SESSION["name_mem"];
                             <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li><hr>
+                        <?php
+                            if($role_type == '1'){
+
+                                echo '<li>
+                                <a href="table_admin.php">
+                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
+                            </li>';
+                            }
+                        ?><hr>
                         <li>
                             <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>

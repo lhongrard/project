@@ -169,8 +169,8 @@ $Namemm = $_SESSION["name_mem"];
                                                         <span class="input-group-text"><i class="fa fa-calendar" id="basic-addon1"></i></span>
                                                     </div>
                                                     <input id="date1" type="text" class="form-control" data-provide="datepicker"
-                                                        data-date-language="th-th" placeholder="คลิ๊กเพื่อระบุวันที่" aria-describedby="basic-addon1" >
-                                                    <input id="date" name="date" type="hidden">
+                                                        data-date-language="th-th" placeholder="คลิ๊กเพื่อระบุวันที่" aria-describedby="basic-addon1" autocomplete="off" required>
+                                                    <input id="date" name="date" type="hidden" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -190,7 +190,7 @@ $Namemm = $_SESSION["name_mem"];
                                                 <input id="time" name="time" type="hidden">
                                             </div>
                                         </div>
-                                        <div class="row form-group">
+                                        <!-- <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label class=" form-control-label"><B>ผลัด</B></label>
                                             </div>
@@ -219,7 +219,7 @@ $Namemm = $_SESSION["name_mem"];
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- วัน/เวลา/ผลัด -->
 
                                         <!-- สถานที่เกิดอุบัติเหตุ -->
@@ -229,7 +229,7 @@ $Namemm = $_SESSION["name_mem"];
                                                 <label class=" form-control-label"><B>สถานที่เกิดอุบัติเหตุ</B></label>
                                             </div>
                                             <div class="col-md-9">
-                                                <select name="select_places" id="drop" class="form-control">
+                                                <select name="select_places" id="drop" class="form-control" required>
                                                     <option value=""> ===โปรดเลือก=== </option>
                                                     <option value="วงเวียนคณะมนุษยศาสตร์และสังคมศาสตร์">วงเวียนคณะมนุษยศาสตร์และสังคมศาสตร์</option>
                                                     <option value="วงเวียนหอพักชายที่ 16">วงเวียนหอพักชายที่ 16 </option>
@@ -299,7 +299,7 @@ $Namemm = $_SESSION["name_mem"];
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
+                                        <!-- <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label class=" form-control-label"><b>จำนวนรถจักรยานยนต์ที่เกิดอุบัติเหตุ</b></label>
                                             </div>
@@ -326,7 +326,7 @@ $Namemm = $_SESSION["name_mem"];
                                                 <input type="text" name="num_other" class="form-control">
                                                 <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div id="car">
                                             <div>
                                                 <div class="row form-group">
@@ -344,12 +344,12 @@ $Namemm = $_SESSION["name_mem"];
                                                     <div class="col-md-3">
                                                         <label>ป้ายทะเบียน</label>
                                                         <input type="text" name="car[0][car_reg]"
-                                                            class="form-control">
+                                                            class="form-control" required>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>แบรนด์</label>
                                                         <input type="text" name="car[0][brand]"
-                                                            class="form-control">
+                                                            class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
@@ -357,12 +357,12 @@ $Namemm = $_SESSION["name_mem"];
                                                     <div class="col-md-3">
                                                         <label>รุ่น</label>
                                                         <input type="text" name="car[0][series]"
-                                                            class="form-control">
+                                                            class="form-control" required>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label>สี</label>
                                                         <input type="text" name="car[0][color]"
-                                                            class="form-control">
+                                                            class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="suff">
@@ -374,12 +374,11 @@ $Namemm = $_SESSION["name_mem"];
                                                             <div class="col-md-3">
                                                                 <label for="car_type">ชื่อ-สกุล</label>
                                                                 <input type="text" name="car[0][suff][0][name_suff]"
-                                                                    class="form-control">
+                                                                    class="form-control" required>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
                                                                 <select class="form-control" name="car[0][suff][0][type_suff]">
-                                                                    <option value="">===โปรดเลือก===</option>
                                                                     <option value="บุคลากร">- บุคลากร</option>
                                                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
                                                                     <optgroup label="นักศึกษา">
@@ -439,7 +438,6 @@ $Namemm = $_SESSION["name_mem"];
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <select name="cause" id="drop2" class="form-control">
-                                                    <option value=""> ===โปรดเลือก=== </option>
                                                     <option value="ขับรถเสียหลักเอง หรือล้มเอง">ขับรถเสียหลักเอง
                                                         หรือล้มเอง </option>
                                                     <option value="ขับรถชนกันหรือชนท้าย (ระหว่างรถยนต์ - รถจักรยานยนต์)">ขับรถชนกันหรือชนท้าย
@@ -487,7 +485,7 @@ $Namemm = $_SESSION["name_mem"];
                                                 <label class=" form-control-label"><B>จำนวผู้บาดเจ็บ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" name="injured" class="form-control">
+                                                <input type="text" name="injured" class="form-control" required>
                                                 <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
@@ -496,7 +494,7 @@ $Namemm = $_SESSION["name_mem"];
                                                 <label for="text" class=" form-control-label"><B>จำนวนผู้เสียชีวิต</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" name="decreased" class="form-control">
+                                                <input type="text" name="decreased" class="form-control" required>
                                                 <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
@@ -803,12 +801,12 @@ $Namemm = $_SESSION["name_mem"];
                     <div class="col-md-3">
                         <label>ป้ายทะเบียน</label>
                         <input type="text" name="car[${j}][car_reg]"
-                            class="form-control">
+                            class="form-control" required>
                     </div>
                     <div class="col-md-3">
                         <label>แบรนด์</label>
                         <input type="text" name="car[${j}][brand]"
-                            class="form-control">
+                            class="form-control" required>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -816,12 +814,12 @@ $Namemm = $_SESSION["name_mem"];
                     <div class="col-md-3">
                         <label>รุ่น</label>
                         <input type="text" name="car[${j}][series]"
-                            class="form-control">
+                            class="form-control" required>
                     </div>
                     <div class="col-md-3">
                         <label>สี</label>
                         <input type="text" name="car[${j}][color]"
-                            class="form-control">
+                            class="form-control" required>
                     </div>
                 </div>
                 <div class="suff">
@@ -833,12 +831,11 @@ $Namemm = $_SESSION["name_mem"];
                             <div class="col-md-3">
                                 <label for="car_type">ชื่อ-สกุล</label>
                                 <input type="text" name="car[${j}][suff][0][name_suff]"
-                                    class="form-control">
+                                    class="form-control" required>
                             </div>
                             <div class="col-md-3">
                                 <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
                                 <select class="form-control" name="car[${j}][suff][0][type_suff]">
-                                    <option value="">===โปรดเลือก===</option>
                                     <option value="บุคลากร">- บุคลากร</option>
                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
                                     <optgroup label="นักศึกษา">
@@ -896,12 +893,11 @@ $Namemm = $_SESSION["name_mem"];
                                                             <div class="col-md-3">
                                                                 <label for="car_type">ชื่อ-สกุล</label>
                                                                 <input type="text" name="car[${num}][suff][${n}][name_suff]"
-                                                                    class="form-control">
+                                                                    class="form-control" required>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <label>คณะ/หน่วยงาน/บุคคลภายนอก</label>
                                                                 <select class="form-control" name="car[${num}][suff][${n}][type_suff]">
-                                                                    <option value="">===โปรดเลือก===</option>
                                                                     <option value="บุคลากร">- บุคลากร</option>
                                                                     <option value="บุคคลภายนอก">- บุคคลภายนอก</option>
                                                                     <optgroup label="นักศึกษา">
@@ -976,6 +972,7 @@ $Namemm = $_SESSION["name_mem"];
                 if(i<10) i = `0${i}`
                 $("#min").append(`<option value="${i}">${i}</option>`)
             }
+            $('#time').val("00:00:00");
         })
     </script>
 </body>

@@ -109,7 +109,7 @@
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li><hr>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
