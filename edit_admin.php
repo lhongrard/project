@@ -9,6 +9,9 @@ $stmt->bindParam(1,$usern);
 $stmt->execute();
 $caseData = $stmt->fetch();
 
+include 'member.php';
+$Namemm = $_SESSION["name_mem"];
+
 // echo ($caseData);
 // exit();
 // exit();
@@ -93,9 +96,14 @@ $caseData = $stmt->fetch();
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="index_officer.php">
-                                <i class="fas fa-home"></i>หน้าแรก</a>
+                    <li class="has-sub">
+                        <li>                            
+                            <center><h2> สวัสดี, <br><?php echo $Namemm;?> </h2></center>
+                        </li><hr>
+                        <li>
+                            <a class="js-arrow" href="index_admin.php">
+                            <i class="fas fa-home"></i>หน้าแรก</a>
+                        </li>
                         <li>
                             <a href="form.php">
                                 <i class="fa fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
@@ -135,6 +143,9 @@ $caseData = $stmt->fetch();
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+                        <li>
+                            <h3> สวัสดี, <br><?php echo $Namemm;?> </h3>
+                        </li><hr>
                         <li>
                             <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>

@@ -1,5 +1,6 @@
 <?php
-
+include 'member.php';
+$Namemm = $_SESSION["name_mem"];
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +50,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="index_officer.html">
                             <img src="images/icon/logo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -63,9 +64,14 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
+                    <li class="has-sub">
+                        <li>                            
+                            <center><h2> สวัสดี, <br><?php echo $Namemm;?> </h2></center>
+                        </li><hr>
+                        <li>
                             <a class="js-arrow" href="index_officer.php">
-                                <i class="fas fa-home"></i>หน้าแรก</a>
+                            <i class="fas fa-home"></i>หน้าแรก</a>
+                        </li>
                         <li>
                             <a href="form.php">
                                 <i class="fa fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
@@ -75,11 +81,11 @@
                                 <i class="fas fa-table"></i>ดูข้อมูล</a>
                         </li>
                         <li>
-                            <a href="map.html">
+                            <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
@@ -91,13 +97,16 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
+                <a href="index_officer.php">
                     <img src="images/icon/logo.png" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+                        <li>
+                            <h3> สวัสดี, <br><?php echo $Namemm;?> </h3>
+                        </li><hr>
                         <li>
                             <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
@@ -111,11 +120,11 @@
                                 <i class="fas fa-table"></i>ดูข้อมูล</a>
                         </li>
                         <li class="active has-sub">
-                            <a href="map.html">
+                            <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li><hr>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>

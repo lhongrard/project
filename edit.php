@@ -1,5 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลาให้เป็นเวลาประเทศไทย
+include 'member.php';
+$Namemm = $_SESSION["name_mem"];
 include ('connect.php');
 $case = $_GET['case'];
 $stmtCase = $conn->prepare("SELECT * FROM cases WHERE cases.case_id=?");
@@ -26,6 +28,7 @@ $stmtCar->execute();
 // print_r($stmtCar->fetch());
 // exit;
 $countcar = 0;
+
 
 ?>
 
@@ -93,9 +96,14 @@ $countcar = 0;
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
+                    <li class="has-sub">
+                        <li>                            
+                            <center><h2> สวัสดี, <br><?php echo $Namemm;?> </h2></center>
+                        </li><hr>
+                        <li>
                             <a class="js-arrow" href="index_officer.php">
-                                <i class="fas fa-home"></i>หน้าแรก</a>
+                            <i class="fas fa-home"></i>หน้าแรก</a>
+                        </li>
                         <li>
                             <a href="form.php">
                                 <i class="fa fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
@@ -129,6 +137,9 @@ $countcar = 0;
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+                        <li>
+                            <h3> สวัสดี, <br><?php echo $Namemm;?> </h3>
+                        </li><hr>
                         <li>
                             <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
@@ -910,8 +921,8 @@ $countcar = 0;
             $("#car").append(`
             <div>
                 <div class="btn-close">
-                    <button type="button" style="float: right" onclick="remove_car(this)" >
-                        <span  style="font-size: 45px;color: red">&times;</span>
+                    <button type="button" style="float: right" class="btn-danger btn-sm" onclick="remove_car(this)" >
+                        ลบข้อมูลรถ
                     </button>
                 </div>
                 <div class="row form-group">
@@ -1063,10 +1074,10 @@ $countcar = 0;
                                                             </div>
                                                         </div>
                                                         <div class="btn-close-suff">
-                                                            <button type="button" style="position : absolute; right:0; "  onclick="remove_suff(this)" >
-                                                                <span  style="font-size: 45px;color: red">&times;</span>
+                                                            <button type="button"  class="btn btn-warning btn-sm" onclick="remove_suff(this)" >
+                                                            ลบรายละเอียดผู้ประสบอุบัติเหตุ
                                                             </button>
-                                                        </div>
+                                                        </div><br>
                                                     </div>
             `)
         }

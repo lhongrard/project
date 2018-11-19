@@ -32,7 +32,7 @@ session_start();
         else if($row['role_type_role_id'] == '2'){
             $_SESSION["name_mem"] = $row['name_mem'];
 
-        header("Location: index_manager.php");
+        header("Location: index_officer.php");
         exit();
         }
 

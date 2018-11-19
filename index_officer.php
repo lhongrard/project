@@ -1,8 +1,5 @@
 <?php
 include 'member.php';
-$nameMem = $_GET['name_mem'];
-echo $nameMem;
-exit();
 $Namemm = $_SESSION["name_mem"];
 ?>
 
@@ -81,7 +78,7 @@ $Namemm = $_SESSION["name_mem"];
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
@@ -102,8 +99,8 @@ $Namemm = $_SESSION["name_mem"];
                     <ul class="list-unstyled navbar__list">
                         <li>
                             
-                                <h2> <?php echo $_SEESION["name_mem"];?> </h2>
-                        </li>
+                                <h2> สวัสดี, <br> <h3><?php echo $Namemm;?></h3> </h2>
+                        </li><hr>
                         <li class="active has-sub">
                             <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
@@ -121,7 +118,7 @@ $Namemm = $_SESSION["name_mem"];
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li><hr>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
@@ -149,6 +146,11 @@ $Namemm = $_SESSION["name_mem"];
                                 </div>
                             </div>
                         </div>
+
+
+                        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+
                         <div class="row m-t-25">
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
@@ -706,6 +708,42 @@ $Namemm = $_SESSION["name_mem"];
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+
+    
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script>
+    window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        exportEnabled: true,
+		title:{
+			text: "สถิติอุบัติเหตุทางจราจร ภายในพื้นที่มหาวิทยาลัยขอนแก่น ข้อมูลประจำเดือนมกราคม - ธันวาคม พ.ศ. 2560"              
+		},
+        subtitles: [{
+		text: "Currency Used: Thai Baht (฿)"
+	    }],
+		
+		data: [              
+		{
+			// Change type to "bar", "area", "spline", "pie",etc.
+			type: "pie",
+            showInLegend: "true",
+      
+			dataPoints: [
+				{ label: "apple",  y: 10  },
+				{ label: "orange", y: 15  },
+				{ label: "banana", y: 25  },
+				{ label: "mango",  y: 30  },
+				{ label: "grape",  y: 28  }
+			]
+		}
+		]
+	});
+	chart.render();
+}
+    </script>
+    
 
 </body>
 

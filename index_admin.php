@@ -1,3 +1,7 @@
+<?php
+include 'member.php';
+$Namemm = $_SESSION["name_mem"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +46,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="index_admin.html">
                             <img src="images/icon/logo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">

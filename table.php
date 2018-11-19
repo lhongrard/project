@@ -3,6 +3,9 @@
   $connect->set_charset("utf8");
   $query ="SELECT cases.*,car.*,sufferer.* from cases,car,sufferer where cases.case_id=car.case_case_id and car.car_id=sufferer.car_car_id";
   $result = mysqli_query($connect, $query) or die ("error");
+
+  include 'member.php';
+$Namemm = $_SESSION["name_mem"];
 ?>
 
 
@@ -65,12 +68,13 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="index_officer.php">
-                                <i class="fas fa-home"></i>หน้าแรก</a>
+                    <li class="has-sub">
+                        <li>                            
+                           <center><h2> สวัสดี, <br><?php echo $Namemm;?> </h2></center>
+                        </li><hr>
                         <li>
-                            <a href="form.php">
-                                <i class="fa fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
+                            <a class="js-arrow" href="index_officer.php">
+                            <i class="fas fa-home"></i>หน้าแรก</a>
                         </li>
                         <li>
                             <a href="table.php">
@@ -81,7 +85,7 @@
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
@@ -101,6 +105,9 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
+                            <h3> สวัสดี, <br><?php echo $Namemm;?> </h3>
+                        </li><hr>
+                        <li>
                             <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
                         </li>
@@ -118,7 +125,7 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>

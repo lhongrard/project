@@ -10,6 +10,8 @@
   $sql ="SELECT * FROM member,role_type WHERE member.username = $username AND role_type.role_id=member.role_type_role_id  ";
   $query = mysqli_query($connect, $sql) or die ("error");
 
+  include 'member.php';
+  $Namemm = $_SESSION["name_mem"];
   ?>
 
 <!DOCTYPE html>
@@ -62,7 +64,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index_officer.php">
+                        <a class="logo" href="index_admin.php">
                             <img src="images/icon/logo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -76,10 +78,14 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="index_officer.php">
-                                <i class="fas fa-home"></i>หน้าแรก</a>
+                    <li class="has-sub">
+                        <li>                            
+                            <center><h2> สวัสดี, <br><?php echo $Namemm;?> </h2></center>
+                        </li><hr>
                         <li>
+                            <a class="js-arrow" href="index_admin.php">
+                            <i class="fas fa-home"></i>หน้าแรก</a>
+                        </li>       
                             <a href="form.php">
                                 <i class="fa fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
                         </li>
@@ -92,7 +98,7 @@
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
@@ -104,7 +110,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="index_officer.php">
+                <a href="index_admin.php">
                     <img src="images/icon/logo.png" alt="Cool Admin" />
                 </a>
             </div>
@@ -112,7 +118,10 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
-                            <a class="js-arrow" href="index_officer.php">
+                            <h3> สวัสดี, <br><?php echo $Namemm;?> </h3>
+                            </li><hr>
+                        <li>
+                            <a class="js-arrow" href="index_admin.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
                         </li>
                         <li>
@@ -134,7 +143,7 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>

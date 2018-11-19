@@ -6,6 +6,8 @@
   $sql ="SELECT * FROM cases,car,sufferer WHERE cases.case_id = $case AND car.case_case_id = $case AND sufferer.car_car_id = car.car_id";
   $query = mysqli_query($connect, $sql) or die ("error");
 
+  include 'member.php';
+$Namemm = $_SESSION["name_mem"];
   ?>
 
 
@@ -74,8 +76,13 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
+                        <li>                            
+                            <center><h2> สวัสดี, <br><?php echo $Namemm;?> </h2></center>
+                        </li><hr>
+                        <li>
                             <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
+                        </li>
                         <li>
                             <a href="form.php">
                                 <i class="fa fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
@@ -89,7 +96,7 @@
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
@@ -108,6 +115,10 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+                    <li>
+                            
+                                <h3> สวัสดี, <br><?php echo $Namemm;?> </h3>
+                        </li><hr>
                         <li>
                             <a class="js-arrow" href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
@@ -126,7 +137,7 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
