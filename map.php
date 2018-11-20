@@ -254,7 +254,7 @@ $Namemm = $_SESSION["name_mem"];
                         .event
                         .addListener(casemarker, 'click', (function (marker, i) {
                             return function () {
-                            infowindow.setContent(`<p style="text-align:center; font-size:17px"> วันที่เกิดอุบัติเหตุ ${value.date} <br> เวลาที่เกิดอุบัติเหตุ ${value.time} น. <br> สถานที่เกิดเหตุ -> ${value.places} <br> <img src='./uploads/images/${value.img}' width="600" height="600"> </p>`);
+                            infowindow.setContent(`<p style="text-align:center; font-size:17px"> วันที่เกิดอุบัติเหตุ ${value.date} <br> เวลาที่เกิดอุบัติเหตุ ${value.time} น. <br> สถานที่เกิดเหตุ -> ${value.places} <br> สถานที่เกิดเหตุ(อื่นๆ) -> ${value.places_des} <br> <img src='./uploads/images/${value.img}' width="600" height="600"> </p>`);
                             infowindow.open(map, marker);
                         }
                     })(casemarker, key));

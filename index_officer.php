@@ -146,8 +146,9 @@ $role_type = $_SESSION["role_type"];
                         <li>
                             <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
-                        </li><hr>
-                        <?php
+                        </li>
+                        <hr>
+                        <?php 
                             if($role_type == '1'){
 
                                 echo '<li>

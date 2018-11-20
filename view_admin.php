@@ -182,14 +182,7 @@
                                                     <?php echo $result["username"]?>
                                                 </div>
                                             </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class="form-control-label">รหัสผ่านผู้ใช้ : </label>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <?php echo $result["login_password"]?>
-                                                </div>
-                                            </div>
+                                            
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label class="form-control-label"> ชื่อ - สกุล :</label>

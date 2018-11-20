@@ -371,9 +371,7 @@ $Namemm = $_SESSION["name_mem"];
                                                 </div>
                                             </div>
                                     <div class="card-footer">
-                                    <center><button class="btn btn-success" onclick="printCase()">
-                                                <h5 style="color:white;">พิมพ์หน้านี้</h5>
-                                            </button></center><hr>
+                                    
                                     <center><a href=javascript:history.back(1)><button type="button" class="btn btn-danger">
                                                 <h5 style="color:white;">ย้อนกลับ</h5>
                                             </button></a></center>
