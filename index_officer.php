@@ -1,20 +1,32 @@
 <?php
 include 'connect.php';
+// Table 1
+// จำนวนการเกิดอุบัติเหตุทางจราจร
 $result = $conn->query("SELECT * FROM cases");
 $num_cnt = $result->rowCount();
-
+// จำนวนบุคคล
 $result2 = $conn->query("SELECT * FROM sufferer");
 $num_cnt2 = $result2->rowCount();
-
+// จำนวนรถ
 $result3 = $conn->query("SELECT * FROM car");
 $num_cnt3 = $result3->rowCount();
-
+// จำนวนบาดเจ็บ
 $result4 = $conn->query("SELECT SUM(injured) AS total FROM cases");
 $row1 = $result4->fetch(PDO::FETCH_ASSOC);
-
-
+// เสียชีวิต
 $result5 = $conn->query("SELECT SUM(deceased) AS total FROM cases");
 $row2 = $result5->fetch(PDO::FETCH_ASSOC);
+// Table 1 END //
+
+// Chart1
+$chart1_e = $conn->query("SELECT duty FROM cases WHERE duty='ดึก'");
+$num_crt1_e = $chart1_e->rowCount();
+$chart1_m = $conn->query("SELECT duty FROM cases WHERE duty='เช้า'");
+$num_crt1_m = $chart1_m->rowCount();
+$chart1_n = $conn->query("SELECT duty FROM cases WHERE duty='บ่าย'");
+$num_crt1_n = $chart1_n->rowCount();
+// Chart1 END //
+
 
 
 
@@ -207,16 +219,14 @@ $role_type = $_SESSION["role_type"];
                                                 <td class="text-center"><?php echo $row1['total']; ?> ราย</td>
                                                 <td class="text-center"><?php echo $row2['total']; ?> ราย</td>
                                             </tr>
-                                            
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
                         </div>
                         <hr>
-
-                        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-
+                        <div class="col-lg-12">
+                        <div id="piechart_3d" style="height: 300px;"></div>
+                        </div>
 
 
                         <div class="row m-t-25">
@@ -309,60 +319,23 @@ $role_type = $_SESSION["role_type"];
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
+    <script src="vendor/slick/slick.min.js"></script>
     <script src="vendor/wow/wow.min.js"></script>
     <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
+    <script src="vendor/counter-up/jquery.counterup.min.js"></script>
     <script src="vendor/circle-progress/circle-progress.min.js"></script>
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
 
-    
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-    <script>
-    window.onload = function () {
-	var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-        exportEnabled: true,
-		title:{
-			text: "สถิติอุบัติเหตุทางจราจร ภายในพื้นที่มหาวิทยาลัยขอนแก่น ข้อมูลประจำเดือนมกราคม - ธันวาคม พ.ศ. 2560"              
-		},
-        subtitles: [{
-		text: "Currency Used: Thai Baht (฿)"
-	    }],
-		
-		data: [              
-		{
-			// Change type to "bar", "area", "spline", "pie",etc.
-			type: "pie",
-            showInLegend: "true",
-      
-			dataPoints: [
-				{ label: "apple",  y: 10  },
-				{ label: "orange", y: 15  },
-				{ label: "banana", y: 25  },
-				{ label: "mango",  y: 30  },
-				{ label: "grape",  y: 28  }
-			]
-		}
-		]
-	});
-	chart.render();
-}
-    </script>
-
+    <!-- Chart Script -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- Chart Script END -->
 
     <!-- chart1 -->
     <script type="text/javascript">
@@ -371,22 +344,25 @@ $role_type = $_SESSION["role_type"];
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-         
          <?php
-        //  $row=$test1->fetch_assoc();
-        //  echo "['".$row[]]"
-         
+            echo "['เช้า (08.00 - 16.00 น.)', $num_crt1_m],
+                  ['บ่าย (16.00 - 24.00 น.)', $num_crt1_n],
+                  ['ดึก (24.00 - 08.00 น.)', $num_crt1_e]";
          ?>
         ]);
 
         var options = {
-          title: 'My Daily Activities',
+          title: 'กราฟสถิติอุบัติเหตุทางจราจร ภายในพื้นที่มหาวิทยาลัยขอนแก่น แบ่งตามช่วงเวลา',
           is3D: true,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
         chart.draw(data, options);
       }
+
+      $(window).resize(function(){
+        drawChart();
+});
     </script>
 
 </body>
