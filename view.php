@@ -361,15 +361,7 @@ $Namemm = $_SESSION["name_mem"];
                                             </div>
                                             <hr>
 
-                                            <h3>รูป</h3>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class="form-control-label"></label>
-                                                </div>
-                                                <div class="col-lg-5">
-                                                    <img src="./uploads/images/<?php echo $result["img"];?>" >
-                                                </div>
-                                            </div>
+                                            
                                     <div class="card-footer">
                                     
                                     <center><a href=javascript:history.back(1)><button type="button" class="btn btn-danger">

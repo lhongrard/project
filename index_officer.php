@@ -19,12 +19,14 @@ $row2 = $result5->fetch(PDO::FETCH_ASSOC);
 // Table 1 END //
 
 // Chart1
+/*
 $chart1_e = $conn->query("SELECT duty FROM cases WHERE duty='ดึก'");
 $num_crt1_e = $chart1_e->rowCount();
 $chart1_m = $conn->query("SELECT duty FROM cases WHERE duty='เช้า'");
 $num_crt1_m = $chart1_m->rowCount();
 $chart1_n = $conn->query("SELECT duty FROM cases WHERE duty='บ่าย'");
 $num_crt1_n = $chart1_n->rowCount();
+*/
 // Chart1 END //
 
 
@@ -71,6 +73,10 @@ $role_type = $_SESSION["role_type"];
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    
 
 </head>
 
@@ -224,9 +230,17 @@ $role_type = $_SESSION["role_type"];
                                 </div>
                         </div>
                         <hr>
-                        <div class="col-lg-12">
-                        <div id="piechart_3d" style="height: 300px;"></div>
+                        <div class="row m-t-25">
+                            <div class="col-lg-6">
+                                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                            <div id="chart2" style="height: 370px; width: 100%;"></div>    
+                            </div>
                         </div>
+                        <hr>
+
 
 
                         <div class="row m-t-25">
@@ -337,33 +351,37 @@ $role_type = $_SESSION["role_type"];
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Chart Script END -->
 
-    <!-- chart1 -->
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-         <?php
-            echo "['เช้า (08.00 - 16.00 น.)', $num_crt1_m],
-                  ['บ่าย (16.00 - 24.00 น.)', $num_crt1_n],
-                  ['ดึก (24.00 - 08.00 น.)', $num_crt1_e]";
-         ?>
-        ]);
+    <!-- chart -->
+    <script src="./chart1.php"></script>
+    <script src="./chart2.php"></script>
 
-        var options = {
-          title: 'กราฟสถิติอุบัติเหตุทางจราจร ภายในพื้นที่มหาวิทยาลัยขอนแก่น แบ่งตามช่วงเวลา',
-          is3D: true,
-        };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+
+    <!-- <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['', ''],
+                    <?php
+                      //  echo "['เช้า (08.00 - 16.00 น.)', $num_crt1_m],
+                         //   ['บ่าย (16.00 - 24.00 น.)', $num_crt1_n],
+                           // ['ดึก (24.00 - 08.00 น.)', $num_crt1_e]";
+                    ?>
+                ]);
+
+                var options = {
+                  title: 'แบ่งตามช่วงเวลา',
+                 
+                is3D: true,
+                fontName: 'Kanit',
+                fontSize: 16,
+                legend: {position: 'bottom', textStyle: {color: 'black', fontSize: 16}}
+                };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_1'));
         chart.draw(data, options);
-      }
-
-      $(window).resize(function(){
-        drawChart();
-});
-    </script>
+    };
+    </script> -->
 
 </body>
 

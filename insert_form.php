@@ -30,34 +30,39 @@ try {
         $duty = "บ่าย";
     }else {
         $duty = "ดึก";
-    }
-    if($_FILES['img']["name"]!=null){
-        // upload image
-        $ext = pathinfo(basename($_FILES['img']['name']), PATHINFO_EXTENSION);
-        $new_image_name = 'img_'.uniqid().".".$ext;
-        $target_dir = "./uploads/images/";
-        $target_file = $target_dir . $new_image_name;
-        // uploading
-        $success = move_uploaded_file($_FILES['img']['tmp_name'], $target_file) ;
-        if ($success==FALSE){
-            echo "ขออภัย มีปัญหาเกิดขึ้นขณะทำการอัพโหลดรูปของท่าน";
-            exit();
-        }
-        $img2 = $new_image_name;
-    }else{
-        $img2 = null;
-    }
+    };
+
+    // if($_FILES['img']["name"]!=null){
+    //     // upload image
+    //     $ext = pathinfo(basename($_FILES['img']['name']), PATHINFO_EXTENSION);
+    //     $new_image_name = 'img_'.uniqid().".".$ext;
+    //     $target_dir = "./uploads/images/";
+    //     $target_file = $target_dir . $new_image_name;
+    //     // uploading
+    //     $success = move_uploaded_file($_FILES['img']['tmp_name'], $target_file) ;
+    //     if ($success==FALSE){
+    //         echo "ขออภัย มีปัญหาเกิดขึ้นขณะทำการอัพโหลดรูปของท่าน";
+    //         exit();
+    //     }
+    //     $img2 = $new_image_name;
+    // }else{
+    //     $img2 = null;
+    // }
 
 
   
 
-    // $place = "";
-    // if ($select_places == "อื่นๆ"){
-    //     $place = $otherplaces_des;
-    // }
-    // else {
-    //     $place = $select_places;
-    // }
+    $place = "";
+    $place2 = "-";
+    if ($select_places == "อื่นๆ"){
+        $place = $otherplaces_des;
+    }
+    else if($select_places !== "อื่นๆ"){
+        $otherplaces_des = $place2;
+
+    }else{
+        $place = $select_places;
+    }
 
     $cause = "";
     if ($select_cause == "อื่นๆ"){
@@ -67,6 +72,7 @@ try {
         $cause = $select_cause;
     }
 
+    
     
     
 
@@ -82,10 +88,10 @@ try {
         `places_des`,
         `injured`, 
         `deceased`, 
-        `note`,
-        `img`
+        `note`
+        
         ) 
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+    VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
     $stmt->bindParam('1', $date);
     $stmt->bindParam('2', $time);
@@ -98,7 +104,7 @@ try {
     $stmt->bindParam('9', $injured);
     $stmt->bindParam('10', $decreased);
     $stmt->bindParam('11', $note);
-    $stmt->bindParam('12', $img2);
+    // $stmt->bindParam('12', $img2);
 
     
      $stmt->execute(); //เอาเข้า db
