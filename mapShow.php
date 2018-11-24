@@ -123,11 +123,11 @@ $Namemm = $_SESSION["name_mem"];
                             <a href="table.php">
                                 <i class="fas fa-table"></i>ดูข้อมูล</a>
                         </li>
-                        <li class="active has-sub">
-                            <a href="map.php">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
-                        </li>
                         <li>
+                            <a href="map.php">
+                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                        </li>
+                        <li class="active has-sub">
                             <a href="mapShow.php">
                             <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
                         </li><hr>
@@ -157,7 +157,7 @@ $Namemm = $_SESSION["name_mem"];
                                 <!-- MAP DATA-->
                                 <div class="map-data m-b-40">
                                     <h3 class="title-3 m-b-30">
-                                        <i class="zmdi zmdi-map"></i>แผนที่</h3>
+                                        <i class="zmdi zmdi-map"></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</h3>
 
                                             <div id="map"></div>
 
@@ -237,7 +237,7 @@ $Namemm = $_SESSION["name_mem"];
             $.ajax(
                 {
                     type: "POST",
-                    url: "getJson.php",
+                    url: "getJson2.php",
                     data: '',
                     success: function(result) {
                         //console.log(result)
@@ -262,7 +262,7 @@ $Namemm = $_SESSION["name_mem"];
                         .event
                         .addListener(casemarker, 'click', (function (marker, i) {
                             return function () {
-                            infowindow.setContent(`<p style="text-align:center; font-size:17px"> วันที่เกิดอุบัติเหตุ ${value.date} <br> เวลาที่เกิดอุบัติเหตุ ${value.time} น. <br> สถานที่เกิดเหตุ : ${value.places} <br> สถานที่เกิดเหตุ(อื่นๆ) : ${value.places_des} </p>`);
+                            infowindow.setContent(`<p style="text-align:center; font-size:17px"> สถานที่ : ${value.name} <br> <img src='./uploads/images/${value.img}' width="600" height="600"> </p>`);
                             infowindow.open(map, marker);
                         }
                     })(casemarker, key));
