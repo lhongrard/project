@@ -84,7 +84,7 @@ $role_type = $_SESSION["role_type"];
                         </li>
                         <li>
                             <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
                         </li>
                         <li>
                             <a href="mapShow.php">
@@ -138,7 +138,7 @@ $role_type = $_SESSION["role_type"];
                         </li>
                         <li>
                             <a href="map.php">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
                         </li>
                         <li>
                             <a href="mapShow.php">

@@ -124,7 +124,7 @@ $countcar = 0;
                         </li>
                         <li>
                             <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
                         </li>
                         <li>
                             <a href="mapShow.php">
@@ -182,7 +182,7 @@ $countcar = 0;
                         </li>
                         <li>
                             <a href="map.php">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
                         </li>
                         <li> 
                             <a href="mapShow.php">

@@ -95,7 +95,7 @@ $role_type = $_SESSION["role_type"];
                         </li>
                         <li>
                             <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
                         </li>
                         <li>
                             <a href="mapShow.php">
@@ -150,7 +150,7 @@ $role_type = $_SESSION["role_type"];
                         </li>
                         <li>
                             <a href="map.php">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
                         </li>
                         <li>
                             <a href="mapShow.php">
@@ -391,6 +391,14 @@ $role_type = $_SESSION["role_type"];
                                                 </div>
                                             </div>
                                             <hr>
+
+                                            <h3>ผู้บันทึกข้อมูล</h3><br>   
+                                            <div class="row form-group">
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["recorder"];?>
+                                                </div>
+                                            </div>
+                                          
 
                                             
                                     <div class="card-footer">

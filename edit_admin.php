@@ -113,8 +113,12 @@ $Namemm = $_SESSION["name_mem"];
                                 <i class="fas fa-table"></i>ดูข้อมูล</a>
                         </li>
                         <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                            <a href="map.php">
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
+                        </li>
+                        <li>
+                            <a href="mapShow.php">
+                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
                         </li>
 
                         <li>
@@ -123,7 +127,7 @@ $Namemm = $_SESSION["name_mem"];
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
@@ -160,7 +164,11 @@ $Namemm = $_SESSION["name_mem"];
                         </li>
                         <li>
                             <a href="map.php">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
+                        </li>
+                        <li>
+                            <a href="mapShow.php">
+                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
                         </li>
                         <hr>
                         <li class="active has-sub">
@@ -169,7 +177,7 @@ $Namemm = $_SESSION["name_mem"];
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
             </div>

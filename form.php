@@ -145,7 +145,7 @@ $role_type = $_SESSION["role_type"];
                         </li>
                         <li>
                             <a href="map.php">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
                         </li>
                         <li>
                             <a href="mapShow.php">
@@ -542,6 +542,18 @@ $role_type = $_SESSION["role_type"];
                                                 <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
                                             </div>
                                         </div>
+
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label"><B>ผู้บันทึกข้อมูล</B></label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" name="recorder" class="form-control" 
+                                                value="<?php echo $Namemm;?> "
+                                                readonly>
+                                            </div>
+                                        </div>
+
                                         
 
 

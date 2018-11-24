@@ -1,6 +1,6 @@
 <?php
 include 'connect.php';
-// Chart1
+
 $a1 = $conn->query("SELECT cause FROM cases WHERE cause = 'ขับรถเสียหลักเอง หรือล้มเอง'");
 $a = $a1->rowCount();
 
@@ -51,5 +51,5 @@ $p = $a16->rowCount();
 
 $a17 = $conn->query("SELECT cause FROM cases WHERE cause = 'อื่นๆ'");
 $q = $a17->rowCount();
-// Chart1 END //
+
 ?>
