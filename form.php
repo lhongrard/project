@@ -3,6 +3,8 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
 
 include 'member.php';
 $Namemm = $_SESSION["name_mem"];
+$role_type = $_SESSION["role_type"];
+
 ?>
 
 
@@ -87,8 +89,23 @@ $Namemm = $_SESSION["name_mem"];
                                 <i class="fas fa-table"></i>ดูข้อมูล</a>
                         </li>
                         <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่</a>
+                            <a href="map.php">
+                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
+                        </li>
+                        <li>
+                            <a href="mapShow.php">
+                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
+                        </li>
+                        <li>
+                            <?php
+                            if($role_type == '1'){
+
+                                echo '<li>
+                                <a href="table_admin.php">
+                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
+                            </li>';
+                            }
+                        ?>
                         </li>
                         <li>
                             <a href="logout.php">
@@ -129,7 +146,22 @@ $Namemm = $_SESSION["name_mem"];
                         <li>
                             <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
-                        </li><hr>
+                        </li>
+                        <li>
+                            <a href="mapShow.php">
+                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
+                        </li>
+                        <hr>
+                        <?php 
+                            if($role_type == '1'){
+
+                                echo '<li>
+                                <a href="table_admin.php">
+                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
+                            </li>';
+                            }
+                        ?>
+                        <hr>
                         <li>
                             <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>

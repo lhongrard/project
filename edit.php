@@ -3,6 +3,8 @@ date_default_timezone_set('Asia/Bangkok'); //เปลี่ยนเวลา�
 
 include 'member.php';
 $Namemm = $_SESSION["name_mem"];
+$role_type = $_SESSION["role_type"];
+
 
 include ('connect.php');
 $case = $_GET['case'];
@@ -125,7 +127,22 @@ $countcar = 0;
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="mapShow.php">
+                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
+                        </li>
+                        <li>
+                            <?php
+                            if($role_type == '1'){
+
+                                echo '<li>
+                                <a href="table_admin.php">
+                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
+                            </li>';
+                            }
+                        ?>
+                        </li>
+                        <li>
+                            <a href="logout.php">
                                 <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
@@ -157,7 +174,7 @@ $countcar = 0;
                         </li>
                         <li class="active has-sub">
                             <a href="form.php">
-                                <i class="fa fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
+                                <i class="fa fa-edit"></i>แก้ไขข้อมูลอุบัติเหตุ</a>
                         </li>
                         <li>
                             <a href="table.php">
@@ -167,9 +184,23 @@ $countcar = 0;
                             <a href="map.php">
                                 <i class="fas fa-map-marker-alt"></i>แผนที่</a>
                         </li>
+                        <li> 
+                            <a href="mapShow.php">
+                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
+                        </li>
+                        <hr>
+                        <?php 
+                            if($role_type == '1'){
+
+                                echo '<li>
+                                <a href="table_admin.php">
+                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
+                            </li>';
+                            }
+                        ?>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
             </div>

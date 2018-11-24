@@ -1,6 +1,8 @@
 <?php
 include 'member.php';
 $Namemm = $_SESSION["name_mem"];
+$role_type = $_SESSION["role_type"];
+
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +88,18 @@ $Namemm = $_SESSION["name_mem"];
                         </li>
                         <li>
                             <a href="mapShow.php">
-                            <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
+                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
+                        </li>
+                        <li>
+                            <?php
+                            if($role_type == '1'){
+
+                                echo '<li>
+                                <a href="table_admin.php">
+                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
+                            </li>';
+                            }
+                        ?>
                         </li>
                         <li>
                             <a href="logout.php">
@@ -129,8 +142,19 @@ $Namemm = $_SESSION["name_mem"];
                         </li>
                         <li class="active has-sub">
                             <a href="mapShow.php">
-                            <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
-                        </li><hr>
+                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
+                        </li>
+                        <hr>
+                        <?php 
+                            if($role_type == '1'){
+
+                                echo '<li>
+                                <a href="table_admin.php">
+                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
+                            </li>';
+                            }
+                        ?>
+                        <hr>
                         <li>
                             <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
