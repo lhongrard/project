@@ -1,8 +1,6 @@
 <?php
 include "connect.php";
-// echo "<pre>";
-// print_r($_POST);
-// echo "</pre>";
+
 try {
     //insert ข้อมูลcase
     $date=$_POST["date"];

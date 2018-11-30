@@ -18,22 +18,6 @@ $result5 = $conn->query("SELECT SUM(deceased) AS total FROM cases");
 $row2 = $result5->fetch(PDO::FETCH_ASSOC);
 // Table 1 END //
 
-// Chart1
-/*
-$chart1_e = $conn->query("SELECT duty FROM cases WHERE duty='ดึก'");
-$num_crt1_e = $chart1_e->rowCount();
-$chart1_m = $conn->query("SELECT duty FROM cases WHERE duty='เช้า'");
-$num_crt1_m = $chart1_m->rowCount();
-$chart1_n = $conn->query("SELECT duty FROM cases WHERE duty='บ่าย'");
-$num_crt1_n = $chart1_n->rowCount();
-*/
-// Chart1 END //
-
-
-
-include 'member.php';
-$Namemm = $_SESSION["name_mem"];
-$role_type = $_SESSION["role_type"];
 
 include './query_cause.php';
 include './query_places.php';
@@ -89,8 +73,8 @@ include './query_places.php';
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index_officer.php">
-                            <img src="../maptest/assets/img/kku2.png" style="height: 75px;">
+                        <a class="logo" href="../maptest/index.html">
+                            <img src="images/icon/logo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -102,52 +86,7 @@ include './query_places.php';
             </div>
             <nav class="navbar-mobile">
                 <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                        <li>
-                            <center>
-                                <h2> สวัสดี, <br>
-                                    <?php echo $Namemm;?>
-                                </h2>
-                            </center>
-                        </li>
-                        <hr>
-                        <li>
-                            <a class="js-arrow" href="index_officer.php">
-                                <i class="fas fa-home"></i>หน้าแรก</a>
-                        </li>
-                        <li>
-                            <a href="form.php">
-                                <i class="fa fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
-                        </li>
-                        <li>
-                            <a href="table.php">
-                                <i class="fas fa-table"></i>ดูข้อมูล</a>
-                        </li>
-                        <li>
-                            <a href="map.php">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
-                        </li>
-                        <li>
-                            <a href="mapShow.php">
-                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
-                        </li>
-                        <li>
-                            <?php
-                            if($role_type == '1'){
-
-                                echo '<li>
-                                <a href="table_admin.php">
-                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
-                            </li>';
-                            }
-                        ?>
-                        </li>
-                        <li>
-                            <a href="logout.php">
-                                <i class="fa fa-lock"></i>ออกจากระบบ</a>
-                        </li>
-                    </ul>
+                    
                 </div>
             </nav>
         </header>
@@ -156,57 +95,23 @@ include './query_places.php';
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="index_officer.php">
-                    <img src="../maptest/assets/img/kku2.png" style="height: 75px;">                        
+                <a href="../maptest/index.html">
+                    <img src="images/icon/logo.png" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+             
                         <li>
-
-                            <h2> สวัสดี, <br>
-                                <h3>
-                                    <?php echo $Namemm;?>
-                                </h3>
-                            </h2>
-                        </li>
-                        <hr>
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="index_officer.php">
-                                <i class="fas fa-home"></i>หน้าแรก</a>
+                            <a class="js-arrow" href="../maptest/index.html">
+                            <i class="far fa-map"></i>แผนที่แสดงจุดเกิดอุบัติเหตุภายในพื้นที่มหาวิทยาลัยขอนแก่น</a>
                         </li>
                         <li>
-                            <a href="form.php">
-                                <i class="fas fa-edit"></i>บันทึกข้อมูลอุบัติเหตุ</a>
+                            <a href="login.php">
+                            <i class="fas fa-sign-in-alt"></i>เข้าสู่ระบบ</a>
                         </li>
-                        <li>
-                            <a href="table.php">
-                                <i class="fas fa-table"></i>ดูข้อมูล</a>
-                        </li>
-                        <li>
-                            <a href="map.php">
-                                <i class="fas fa-map-marker-alt"></i>แผนที่แสดงจุดเกิดอุบัติเหตุ</a>
-                        </li>
-                        <li>
-                            <a href="mapShow.php">
-                                <i class="fas fa-map-pin"></i></i>แผนที่แสดงจุดเสี่ยงเกิดอุบัติเหตุ</a>
-                        </li>
-                        <hr>
-                        <?php 
-                            if($role_type == '1'){
-
-                                echo '<li>
-                                <a href="table_admin.php">
-                                    <i class="fas fa-user"></i>จัดการข้อมูลสมาชิก</a>
-                            </li>';
-                            }
-                        ?>
-                        <hr>
-                        <li>
-                            <a href="logout.php">
-                                <i class="fa fa-lock"></i>ออกจากระบบ</a>
-                        </li>
+                        
                     </ul>
                 </nav>
             </div>

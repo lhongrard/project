@@ -59,7 +59,7 @@ $role_type = $_SESSION["role_type"];
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index_officer.php">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        <img src="../maptest/assets/img/kku2.png" style="height: 75px;">        
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -122,7 +122,7 @@ $role_type = $_SESSION["role_type"];
             <div class="logo">
 
                 <a href="index_officer.php">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <img src="../maptest/assets/img/kku2.png" style="height: 75px;">        
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -735,7 +735,7 @@ $role_type = $_SESSION["role_type"];
                             lng: position.coords.longitude
                         };
 
-                        // var latlng = "55.397563, 10.39870099999996";
+                        var latlng = "55.397563, 10.39870099999996";
                         var url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng + "&sensor=false";
                                 $.getJSON(url, function (data) {
                                         for(var i=0;i<data.results.length;i++) {

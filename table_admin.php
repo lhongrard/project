@@ -109,8 +109,8 @@ $Namemm = $_SESSION["name_mem"];
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="index_admin.php">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="index_officer.php">
+                <img src="../maptest/assets/img/kku2.png" style="height: 75px;">
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -120,7 +120,7 @@ $Namemm = $_SESSION["name_mem"];
                             <h3> สวัสดี, <br><?php echo $Namemm;?> </h3>
                         </li><hr>
                         <li>
-                            <a href="index_admin.php">
+                            <a href="index_officer.php">
                                 <i class="fas fa-home"></i>หน้าแรก</a>
                         </li>
                         <li>

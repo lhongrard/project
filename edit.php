@@ -88,7 +88,7 @@ $countcar = 0;
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index_officer.php">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        <img src="../maptest/assets/img/kku2.png" style="height: 75px;">
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -156,7 +156,7 @@ $countcar = 0;
             <div class="logo">
 
                 <a href="index_officer.php">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <img src="../maptest/assets/img/kku2.png" style="height: 75px;">
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">

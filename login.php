@@ -48,7 +48,7 @@ require('connect.php');
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                                <img src="../maptest/assets/img/kku2.png" style="height: 200px;">
                             </a>
                         </div>
                         <div class="login-form">
