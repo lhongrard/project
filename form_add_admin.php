@@ -53,7 +53,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index_officer.php">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                            <img src="./images/logo.png" style="height: 75px;" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -102,7 +102,7 @@
             <div class="logo">
 
                 <a href="index_officer.php">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                    <img src="./images/logo.png" style="height: 90px;" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">

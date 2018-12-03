@@ -48,26 +48,34 @@ require('connect.php');
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="../maptest/assets/img/kku2.png" style="height: 200px;">
+                                <img src="./images/logo.png" style="height: 90px;">
                             </a>
                         </div>
                         <div class="login-form">
                             <form action="member.php" method="post">
+
+                                <div class="form-group">
+                                    <h3>
+                                        <center>เว็บแอปพลิเคชันสำหรับการบันทึกข้อมูลการเกิดอุบัติเหตุ ภายในพื้นที่มหาวิทยาลัยขอนแก่น
+                                    </h3></center>
+                                
+                                </div>
+
                                 <div class="form-group">
                                     <label>รหัสผู้ใช้งาน</label>
                                     <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
                                 </div>
+
                                 <div class="form-group">
                                     <label>รหัสผ่าน</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">เข้าสู่ระบบ</button>
-                                <hr>
-                                <center><a href="../maptest/index.html"><button class="au-btn au-btn--block au-btn--blue m-b-20" type="button"> >> ผู้ใช้งานทั่วไป << </button></a></center>
                                 
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">เข้าสู่ระบบ</button>
+                                
+                                <center><a href="../maptest/index.html"><button class="au-btn au-btn--block au-btn--blue m-b-20" type="button"> >> ผู้ใช้งานทั่วไป << </button></a></center>
 
                             </form>
-
                         </div>
                     </div>
                 </div>

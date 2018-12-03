@@ -83,7 +83,7 @@ $Namemm = $_SESSION["name_mem"];
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index_officer.php">
-                        <img src="../maptest/assets/img/kku2.png" style="height: 75px;">
+                        <img src="./images/logo.png" style="height: 75px;">
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -141,7 +141,7 @@ $Namemm = $_SESSION["name_mem"];
             <div class="logo">
 
                 <a href="index_officer.php">
-                <img src="../maptest/assets/img/kku2.png" style="height: 75px;">
+                <img src="./images/logo.png" style="height: 90px;">
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
