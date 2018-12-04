@@ -88,7 +88,7 @@
                         </li>
                         
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-sign-out"></i>ออกจากระบบ</a>
                         </li>
                     </ul>
@@ -130,7 +130,7 @@
                         </li>
                         <hr>
                         <li>
-                            <a href="#">
+                            <a href="logout.php">
                                 <i class="fa fa-lock"></i>ออกจากระบบ</a>
                         </li>
             </div>
@@ -154,7 +154,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h2>แบบฟอร์มกรอกรายละเอียดสมาชิก</h2>
+                                    <h2>แบบฟอร์มรายละเอียดสมาชิก</h2>
                                 </div>
                                 <div class="card-body card-block" style="font-size:16px;">
                                     <form action="form_add_insert.php" method="POST" class="form-horizontal" enctype="multipart/form-data">
