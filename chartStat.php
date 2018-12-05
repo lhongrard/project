@@ -74,7 +74,8 @@ include './query_places.php';
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="../maptest/index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                <img src="./images/logo.png" style="height: 75px;">        
+                        
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -96,7 +97,8 @@ include './query_places.php';
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="../maptest/index.html">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <img src="./images/logo.png" style="height: 90px;">        
+                   
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">

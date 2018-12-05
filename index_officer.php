@@ -454,7 +454,7 @@ include './query_places.php';
                                             <thead>
                                                 <tr>
 
-                                                    <th class="text-center">สาเกิดอุบัติเหตุ</th>
+                                                    <th class="text-center">สถานที่เกิดอุบัติเหตุ</th>
                                                     <th class="text-center">รวม</th>
                                                 </tr>
                                             </thead>
