@@ -325,7 +325,7 @@ include './query_places.php';
                             <div class="col-lg-12">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
-                                        <h3 class="text-center">แผนภูมิสถิติอุบัติเหตุทางจราจร รายเดือน</h3><br>
+                                        <h3 class="text-center">แผนภูมิสถิติอุบัติเหตุทางจราจร ข้อมูลประจำเดือนมกราคม - ธันวาคม พ.ศ. 2561</h3><br>
                                         <div id="piechart_7" style="height: 370px; width: 100%;"></div>
                                     </div>
                                 </div>
