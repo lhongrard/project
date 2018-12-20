@@ -32,6 +32,8 @@ $stmtCar->execute();
 // print_r($stmtCar->fetch());
 // exit;
 $countcar = 0;
+
+
 ?>
 
 
@@ -88,7 +90,7 @@ $countcar = 0;
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index_officer.php">
-                        <img src="../maptest/assets/img/kku2.png" style="height: 75px;">
+                        <img src="./images/logo.png" style="height: 75px;">
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -156,7 +158,7 @@ $countcar = 0;
             <div class="logo">
 
                 <a href="index_officer.php">
-                <img src="../maptest/assets/img/kku2.png" style="height: 75px;">
+                <img src="./images/logo.png" style="height: 90px;">
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -494,7 +496,7 @@ $countcar = 0;
                                 <?php while ($row = $stmtCar->fetch()) {
                                                         $countsuff = 0
                                             ?>
-                                <input type="hidden" name="car_id[]" value="<?=$row[" car_id"]; ?>">
+                                <input type="hidden" name="car_id[]" value="<?=$row['car_id']; ?>">
 
                                 <div>
                                     <?php if($countcar!=0){ ?>
@@ -733,6 +735,15 @@ $countcar = 0;
                                 </div>
                             </div>
 
+                            
+                            <div class="row form-group" style="display:none">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label"><B>edit</B></label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" name="edit" class="form-control" value="<?php echo "ผู้แก้ไข ".$Namemm." วันที่ ".date("d/m/Y")." เวลา ".date("h:i:sa")?>">
+                                </div>
+                            </div>
 
 
                         </div>

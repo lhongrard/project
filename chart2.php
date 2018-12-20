@@ -17,7 +17,7 @@ var chart = new CanvasJS.Chart("chart2", {
 	exportEnabled: true,
 	animationEnabled: true,
 	title: {
-		text: "กราฟเปอร์เซนต์เปรียบเทียบสถิติอุบัติเหตุทางจราจร ภายในพื้นที่มหาวิทยาลัยขอนแก่น ประเภทบุคคล",
+		text: "แผนภูมิเปอร์เซนต์เปรียบเทียบสถิติอุบัติเหตุทางจราจร ภายในพื้นที่มหาวิทยาลัยขอนแก่น ประเภทบุคคล",
 		fontFamily: 'Kanit',
 		horizontalAlign: "center"
 	},

@@ -29,6 +29,25 @@ $num_crt1_n = $chart1_n->rowCount();
 */
 // Chart1 END //
 
+$prd = date("Y/m/d");
+$prd2 = date("d/m");
+$pd = $conn->query("SELECT date FROM cases WHERE date='$prd'");
+$numPd = $pd->rowCount();
+// จำนวนบุคคล
+$suf = $conn->query("SELECT * FROM `sufferer`,`car`,`cases` WHERE sufferer.car_car_id = car.car_id AND car.case_case_id=cases.case_id AND cases.date='$prd'");
+$numsuf = $suf->rowCount();
+
+// จำนวนรถ
+$pdCar = $conn->query("SELECT * FROM `car`,`cases` WHERE car.case_case_id=cases.case_id AND cases.date='$prd'");
+$numpdCar = $pdCar->rowCount();
+
+// // จำนวนบาดเจ็บ
+$pdIn = $conn->query("SELECT SUM(injured) AS total FROM cases WHERE cases.date='$prd' ");
+$numpdIn = $pdIn->fetch(PDO::FETCH_ASSOC);
+
+// // เสียชีวิต
+$pdDie = $conn->query("SELECT SUM(deceased) AS total FROM cases WHERE cases.date='$prd' ");
+$numpdDie = $pdDie->fetch(PDO::FETCH_ASSOC);
 
 
 include 'member.php';
@@ -230,10 +249,47 @@ include './query_places.php';
                                 </div>
                             </div>
                         </div>
+
                         <div class="row m-t-25">
                             <div class="col-md-12">
                                 <h2 class="text-center">สถิติอุบัติเหตุทางจราจร ภายในพื้นที่มหาวิทยาลัยขอนแก่น
-                                    ข้อมูลประจำเดือนมกราคม - ธันวาคม พ.ศ. 2560</h2><br>
+                                    ประจำวันที่ <?php echo $prd2 ?>/2561</h2><br>
+                                <div class="table-responsive table--no-card m-b-30">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">จำนวนการเกิดอุบัติเหตุทางจราจร</th>
+                                                <th class="text-center">จำนวนบุคคล</th>
+                                                <th class="text-center">จำนวนรถ</th>
+                                                <th class="text-center">จำนวนบาดเจ็บ</th>
+                                                <th class="text-center">เสียชีวิต</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <?php echo $numPd ?> ครั้ง</td>
+                                                <td class="text-center">
+                                                    <?php echo $numsuf ?> คน</td>
+                                                <td class="text-center">
+                                                    <?php echo $numpdCar ?> คัน</td>
+                                                <td class="text-center">
+                                                    <?php echo $numpdIn['total']; ?> ราย</td>
+                                                <td class="text-center">
+                                                    <?php echo $numpdDie['total']; ?> ราย</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row m-t-25">
+                            <div class="col-md-12">
+                                <h2 class="text-center">สถิติอุบัติเหตุทางจราจร ภายในพื้นที่มหาวิทยาลัยขอนแก่น
+                                    ข้อมูลประจำเดือนมกราคม - ธันวาคม พ.ศ. 2561</h2><br>
                                 <div class="table-responsive table--no-card m-b-30">
                                     <table class="table table-borderless table-striped table-earning">
                                         <thead>
@@ -264,12 +320,22 @@ include './query_places.php';
                                 </div>
                             </div>
                         </div>
-                        <hr>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="au-card recent-report">
+                                    <div class="au-card-inner">
+                                        <h3 class="text-center">แผนภูมิสถิติอุบัติเหตุทางจราจร รายเดือน</h3><br>
+                                        <div id="piechart_7" style="height: 370px; width: 100%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
-                                        <h3 class="text-center">กราฟสถิติอุบัติเหตุทางจราจร
+                                        <h3 class="text-center">แผนภูมิสถิติอุบัติเหตุทางจราจร
                                             ภายในพื้นที่มหาวิทยาลัยขอนแก่น แบ่งตามช่วงเวลา</h3><br>
                                         <div id="piechart_1" style="height: 370px; width: 100%;"></div>
                                     </div>
@@ -278,7 +344,7 @@ include './query_places.php';
                             <div class="col-lg-6">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
-                                        <h3 class="text-center">กราฟเปอร์เซนต์เปรียบเทียบสถิติอุบัติเหตุทางจราจร
+                                        <h3 class="text-center">แผนภูมิเปอร์เซนต์เปรียบเทียบสถิติอุบัติเหตุทางจราจร
                                             ภายในพื้นที่มหาวิทยาลัยขอนแก่น ประเภทบุคคล</h3><br>
                                         <div id="piechart_2" style="height: 370px; width: 100%;"></div>
                                     </div>
@@ -290,7 +356,7 @@ include './query_places.php';
                             <div class="col-lg-6">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
-                                        <h3 class="text-center">กราฟเปอร์เซ็นต์เปรียบเทียบสถิติอุบัติเหตุทางจราจร
+                                        <h3 class="text-center">แผนภูมิเปอร์เซ็นต์เปรียบเทียบสถิติอุบัติเหตุทางจราจร
                                             ภายในพื้นที่มหาวิทยาลัยขอนแก่น ประเภทยานพาหนะ</h3><br>
                                         <div id="piechart_3" style="height: 370px; width: 100%;"></div>
                                     </div>
@@ -299,7 +365,7 @@ include './query_places.php';
                             <div class="col-lg-6">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
-                                        <h3 class="text-center">กราฟเปอร์เซ็นต์เปรียบเทียบสถิติอุบัติเหตุทางจราจร
+                                        <h3 class="text-center">แผนภูมิเปอร์เซ็นต์เปรียบเทียบสถิติอุบัติเหตุทางจราจร
                                             ภายในพื้นที่มหาวิทยาลัยขอนแก่น ประเภทความเสียหาย</h3><br>
                                         <div id="piechart_4" style="height: 370px; width: 100%;"></div>
                                     </div>
@@ -433,7 +499,7 @@ include './query_places.php';
                                 <div class="col-lg-6">
                                     <div class="au-card recent-report">
                                         <div class="au-card-inner">
-                                            <h3 class="text-center">กราฟสถิติสาเหตุการเกิดอุบัติเหตุมากที่สุด
+                                            <h3 class="text-center">แผนภูมิสถิติสาเหตุการเกิดอุบัติเหตุมากที่สุด
                                                 ภายในพื้นที่มหาวิทยาลัยขอนแก่น </h3><br>
                                             <div id="piechart_5" style="height: 370px; width: 100%;"></div>
                                         </div>
@@ -532,7 +598,7 @@ include './query_places.php';
                                 <div class="col-lg-6">
                                     <div class="au-card recent-report">
                                         <div class="au-card-inner">
-                                            <h3 class="text-center">กราฟสรุปสถานที่เกิดอุบัติเหตุ
+                                            <h3 class="text-center">แผนภูมิสรุปสถานที่เกิดอุบัติเหตุ
                                                 ภายในพื้นที่มหาวิทยาลัยขอนแก่น</h3><br>
                                             <div id="piechart_6" style="height: 370px; width: 100%;"></div>
                                         </div>
@@ -583,6 +649,8 @@ include './query_places.php';
     <script src="./chart4_1.php"></script>
     <script src="./chart5_1.php"></script>
     <script src="./chart6_1.php"></script>
+    <script src="./chart7_1.php"></script>
+
 
 </body>
 

@@ -398,6 +398,15 @@ $role_type = $_SESSION["role_type"];
                                                     <?php echo $result["recorder"];?>
                                                 </div>
                                             </div>
+
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label"><B>แก้ไขข้อมูล่าสุดโดย </B></label>
+                                                </div>
+                                            <div class="col-12 col-md-9">
+                                                <?php echo $result['edit'];?>
+                                            </div>
+                                            </div>
                                           
 
                                             

@@ -13,36 +13,31 @@ try{
         $otherPlace= $_POST['otherplaces_des']; 
         $lat= $_POST['case_location_lat'];
         $lng= $_POST['case_location_lng'];
-        $numO= 0;
-        $numC= 0;
-        $numM= 0;
+        $numO = 0;
+        $numC = 0;
+        $numM = 0;
         $cause= $_POST['cause'];
         $otherDes= $_POST['othercause_des'];
         $inju= $_POST['injured'];
         $decreased= $_POST['decreased'];
         $note= $_POST['note'];
         $id_case = $_POST['case_id'];
-
+        $edit = $_POST['edit'];
         
 
-     
-    $time1 = date("H:i:s",strtotime($time));
-    $startM = date("H:i:s",strtotime("08:00:00"));
-    $startN = date("H:i:s",strtotime("16:00:00"));
-    $startE = date("H:i:s",strtotime("23:59:00"));
-    if($time1 >= $startM && $time1 < $startN){
-        $duty = "เช้า";
-    }else if($time1 >= $startN && $time1 <= $startE){
-        $duty = "บ่าย";
-    }else {
-        $duty = "ดึก";
-    }
-
-
-            
         
-       
-        
+        $time1 = date("H:i:s",strtotime($time));
+        $startM = date("H:i:s",strtotime("08:00:00"));
+        $startN = date("H:i:s",strtotime("16:00:00"));
+        $startE = date("H:i:s",strtotime("23:59:00"));
+        if($time1 >= $startM && $time1 < $startN){
+            $duty = "เช้า";
+        }else if($time1 >= $startN && $time1 <= $startE){
+            $duty = "บ่าย";
+        }else {
+            $duty = "ดึก";
+        }
+   
         $cars = $_POST["car"];
         
         foreach($cars as $car){
@@ -117,6 +112,8 @@ try{
 //         $stmt4->bindParam(1,$id);
 //         $stmt4->execute();
 //     }
+//     exit();
+
 
     foreach ($old_car as $id){
         $stmt4 = $conn->prepare("DELETE FROM sufferer WHERE car_car_id = ?");
@@ -142,7 +139,8 @@ try{
     `othercause_des`='$otherDes',
     `injured`='$inju',
     `deceased`='$decreased',
-    `note`='$note'
+    `note`='$note',
+    `edit` = '$edit'
     WHERE `case_id`='$id_case'
     ";
     $stmt99 = $conn->prepare($sql2);
