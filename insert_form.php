@@ -16,6 +16,7 @@ try {
     $other_cause_des = $_POST["othercause_des"];
     $injured = $_POST["injured"];
     $decreased = $_POST["decreased"];
+    $non_injured = $_POST["non_injured"];
     $note = $_POST["note"];
     $recorder = $_POST["recorder"];
  
@@ -88,11 +89,12 @@ try {
         `places_des`,
         `injured`, 
         `deceased`, 
+        `non_injured`, 
         `note`,
         `recorder`
         
         ) 
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
     $stmt->bindParam('1', $date);
     $stmt->bindParam('2', $time);
@@ -104,8 +106,9 @@ try {
     $stmt->bindParam('8', $otherplaces_des);
     $stmt->bindParam('9', $injured);
     $stmt->bindParam('10', $decreased);
-    $stmt->bindParam('11', $note);
-    $stmt->bindParam('12', $recorder);
+    $stmt->bindParam('11', $non_injured);
+    $stmt->bindParam('12', $note);
+    $stmt->bindParam('13', $recorder);
 
     // $stmt->bindParam('12', $img2);
 

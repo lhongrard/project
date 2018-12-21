@@ -190,7 +190,7 @@ $role_type = $_SESSION["role_type"];
                                     <h2>แบบบักทึกข้อมูล</h2>
                                 </div>
                                 <div class="card-body card-block">
-                                    <form action="insert_form.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                    <form action="insert_form.php" method="post" class="form-horizontal" enctype="multipart/form-data" onsubmit="return myFunction()">
                                         <!-- วัน/เวลา/ผลัด -->
                                         <div class="row form-group">
                                             <div class="col col-md-3">
@@ -515,20 +515,29 @@ $role_type = $_SESSION["role_type"];
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label"><B>จำนวผู้บาดเจ็บ</B></label>
+                                                <label class=" form-control-label"><B>จำนวนผู้ไม่ได้รับบาดเจ็บ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" name="injured" class="form-control" autocomplete="off" required>
-                                                <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
+                                                <input type="number" name="non_injured" id="non_injured" class="form-control" value="1" autocomplete="off" required>
+                                                <span class="help-block-none">* ถ้าไม่มีใส่ (0)</span>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="text" class=" form-control-label"><B>จำนวนผู้เสียชีวิต</B></label>
+                                                <label class=" form-control-label"><B>จำนวนผู้บาดเจ็บ</B></label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" name="decreased" class="form-control" autocomplete="off" required>
-                                                <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
+                                                <input type="number" name="injured" id="injured" class="form-control" autocomplete="off"  value="0" required>
+                                                <span class="help-block-none">* ถ้าไม่มีใส่ (0)</span>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label"><B>จำนวนผู้เสียชีวิต</B></label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="number" name="decreased" id="decreased" class="form-control" autocomplete="off" value="0" required>
+                                                <span class="help-block-none">* ถ้าไม่มีใส่ (0)</span>
                                             </div>
                                         </div>
 
@@ -553,10 +562,6 @@ $role_type = $_SESSION["role_type"];
                                                 readonly>
                                             </div>
                                         </div>
-
-                                        
-
-
                                     </div>
                                     <div class="card-footer">
                                         <center><button type="submit" class="btn btn-primary btn-sm">
@@ -816,6 +821,7 @@ $role_type = $_SESSION["role_type"];
     <!-- เพิ่ม,ลด คน -->
     <script>
         var j = 1;
+
         $('#add_car').click(function (e) {
             e.preventDefault()
             $("#car").append(`
@@ -1013,6 +1019,18 @@ $role_type = $_SESSION["role_type"];
             }
             $('#time').val("00:00:00");
         })
+
+        function myFunction(){
+            if(parseInt($('#non_injured').val())+parseInt($('#injured').val())+parseInt($('#decreased').val()) == $('.suff').children().length ){
+                return true
+            }else{
+                alert(`จำนวนผู้ประสบเหตุ ${$('.suff').children().length} คน กรุณากรอกให้ถูกต้อง`)
+                $('#non_injured').focus()
+                return false
+            }
+            
+        }
+
     </script>
     <!-- เพิ่ม,ลด คน END-->
 

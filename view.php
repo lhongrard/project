@@ -365,6 +365,14 @@ $role_type = $_SESSION["role_type"];
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
+                                                    <label class="form-control-label">จำนวนผู้ไม่ได้รับบาดเจ็บ :</label>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <?php echo $result["non_injured"];?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
                                                     <label class="form-control-label">จำนวนผู้บาดเจ็บ :</label>
                                                 </div>
                                                 <div class="col-lg-5">

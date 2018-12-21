@@ -23,6 +23,8 @@ try{
         $note= $_POST['note'];
         $id_case = $_POST['case_id'];
         $edit = $_POST['edit'];
+        $non_injured = $_POST["non_injured"];
+
         
 
         
@@ -140,7 +142,8 @@ try{
     `injured`='$inju',
     `deceased`='$decreased',
     `note`='$note',
-    `edit` = '$edit'
+    `edit` = '$edit',
+    `non_injured` = '$non_injured'
     WHERE `case_id`='$id_case'
     ";
     $stmt99 = $conn->prepare($sql2);

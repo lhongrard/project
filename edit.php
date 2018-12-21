@@ -13,6 +13,7 @@ $stmtCase->bindParam(1,$case);
 $stmtCase->execute();
 
 $caseData = $stmtCase->fetch();
+
 $time = explode(":", $caseData["time"]);
 // print_r($time);
 // exit();
@@ -229,7 +230,7 @@ $countcar = 0;
                                     <h2>แก้ไขข้อมูลอุบัติเหตุ</h2>
                                 </div>
                                 <div class="card-body card-block">
-                                    <form action="edit_form.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                    <form action="edit_form.php" method="post" class="form-horizontal" enctype="multipart/form-data" onsubmit="return myFunction()">
                                         <input type="hidden" name="case_id" class="form-control" value="<?=$caseData['case_id']; ?>">
                                         <!-- วัน/เวลา/ผลัด -->
                                         <div class="row form-group">
@@ -554,8 +555,8 @@ $countcar = 0;
                                                     while ($row_suff = $stmtSuff->fetch()){
                                                     ?>
 
-                                        <input type="hidden" name="suff_id[]" value="<?=$row_suff["suffer_id"]; ?>">
                                         <div>
+                                        <input type="hidden" name="suff_id[]" value="<?=$row_suff["suffer_id"]; ?>">
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label class=" form-control-label"><B>รายละเอียดผู้ประสบอุบัติเหตุ</B></label>
@@ -705,22 +706,31 @@ $countcar = 0;
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label class=" form-control-label"><B>จำนวผู้บาดเจ็บ</B></label>
+                                    <label class=" form-control-label"><B>จำนวนผู้ไม่ได้รับบาดเจ็บ</B></label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <input type="text" name="injured" class="form-control" value="<?=$caseData['injured']; ?>"
-                                        autocomplete="off" required>
-                                    <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
+                                    <input type="number" name="non_injured" id="non_injured" class="form-control" value="<?=$caseData['non_injured'];?>" autocomplete="off" required>
+                                    <span class="help-block-none">* ถ้าไม่มีใส่ (0)</span>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label for="text" class=" form-control-label"><B>จำนวนผู้เสียชีวิต</B></label>
+                                    <label class=" form-control-label"><B>จำนวผู้บาดเจ็บ</B></label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <input type="text" name="decreased" class="form-control" value="<?=$caseData['deceased']; ?>"
+                                    <input type="number" name="injured" id="injured" class="form-control" value="<?=$caseData['injured']; ?>"
                                         autocomplete="off" required>
-                                    <span class="help-block-none">* ถ้าไม่มีใส่เครื่องหมาย (-)</span>
+                                    <span class="help-block-none">* ถ้าไม่มีใส่ (0)</span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label"><B>จำนวนผู้เสียชีวิต</B></label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="number" name="decreased" id="decreased" class="form-control" value="<?=$caseData['deceased']; ?>"
+                                        autocomplete="off" required>
+                                    <span class="help-block-none">* ถ้าไม่มีใส่ (0)</span>
                                 </div>
                             </div>
 
@@ -972,7 +982,6 @@ $countcar = 0;
                 $("#" + btnLoad).removeClass("loading");
             }
         }
-    
     </script>
     <!-- แผนที่ END-->
 
@@ -1189,6 +1198,17 @@ $countcar = 0;
 
         //ดึงสาเหตุุ
         $('#drop2 option[value="<?=$caseData['cause']?>"]').attr('selected', 'selected');
+
+         function myFunction(){
+            if(parseInt($('#non_injured').val())+parseInt($('#injured').val())+parseInt($('#decreased').val()) == $('.suff').children().length ){
+                return true
+            }else{
+                alert(`จำนวนผู้ประสบเหตุ ${$('.suff').children().length} คน กรุณากรอกให้ถูกต้อง`)
+                $('#non_injured').focus()
+                return false
+            }
+            
+        }
     </script>
     <!-- เพิ่ม,ลด คน END-->
 
